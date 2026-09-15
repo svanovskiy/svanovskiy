@@ -100,9 +100,12 @@
   .wrap{ max-width:1120px; margin:0 auto; }
   .reveal{
     opacity:0;
-    transform:translateY(28px);
-    transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
-  }
+    transition:opacity .8s ease;
+}
+
+.reveal.is-visible{
+    opacity:1;
+}
   .reveal.is-visible{ opacity:1; transform:translateY(0); }
   .reveal-delay-1{ transition-delay:.12s; }
   .reveal-delay-2{ transition-delay:.24s; }
@@ -189,24 +192,33 @@
 
   /* ---------- skills cloud ---------- */
   #skills{ padding-top:clamp(20px,4vw,50px); }
-  .skills-cloud{
+.skills-cloud{
     position:relative;
-    max-width:720px;
-    margin:0 auto;
-    height:clamp(560px,78vw,740px);
-  }
-  .skills-center{
+    max-width:980px;
+    margin:40px auto;
+    height:clamp(760px,85vw,980px);
+}
+.skills-center{
     position:absolute;
-    left:50%; top:50%;
+    left:50%;
+    top:50%;
     transform:translate(-50%,-50%);
-    z-index:3;
-    width:clamp(260px,32vw,360px);
-    padding:36px 30px;
+    z-index:5;
+
+    width:clamp(380px,42vw,500px);
+
+    padding:60px 50px;
+
     text-align:center;
+
     background:var(--panel);
+
     border:1px solid var(--line);
-    border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
-  }
+
+    border-radius:58% 42% 47% 53% / 49% 55% 45% 51%;
+
+    box-shadow:0 30px 60px rgba(0,0,0,.05);
+}
   .skills-center h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:12px; }
   .skills-center p{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; }
 
@@ -220,23 +232,36 @@
     color:var(--ink);
   }
 
-  .skill-badge{
+.skill-badge{
     position:absolute;
     transform:translate(-50%,-50%);
-    z-index:1;
-    max-width:190px;
-    padding:20px 24px;
-    display:flex; align-items:center; justify-content:center;
+    z-index:2;
+    max-width:260px;
+    min-height:76px;
+    padding:22px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
     font-family:'Manrope', sans-serif;
-    font-weight:600;
-    font-size:0.85rem;
+    font-weight:700;
+    font-size:.95rem;
     line-height:1.35;
     color:var(--ink);
     cursor:default;
-    animation:floaty var(--dur) ease-in-out var(--delay) infinite alternate;
-    transition:filter .3s ease, box-shadow .3s ease;
-  }
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+}
+  .skill-badge.big{
+    max-width:320px;
+    min-height:100px;
+    font-size:1.12rem;
+    padding:30px 38px;
+    z-index:4;
+
+}
   .skill-badge:hover{ filter:brightness(0.93) saturate(1.15); box-shadow:0 14px 26px -16px rgba(44,42,38,0.35); }
 
   .tone-1{ background:var(--tone-1); }
@@ -252,10 +277,36 @@
   .blob-d{ border-radius:38% 62% 55% 45% / 50% 45% 55% 50%; }
   .blob-e{ border-radius:62% 38% 48% 52% / 42% 55% 45% 58%; }
 
-  @keyframes floaty{
-    0%{ transform:translate(calc(-50% - var(--dx)), calc(-50% - var(--dy))); }
-    100%{ transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))); }
-  }
+  @keyframes floatUp{
+    0%,100%{
+        transform:translate(-50%,-50%) translateY(-8px);
+    }
+    50%{
+        transform:translate(-50%,-50%) translateY(8px);
+    }
+
+}
+
+@keyframes floatSide{
+    0%,100%{
+        transform:translate(-50%,-50%) translateX(-8px);
+    }
+    50%{
+        transform:translate(-50%,-50%) translateX(8px);
+    }
+
+}
+
+@keyframes floatRotate{
+
+    0%,100%{
+        transform:translate(-50%,-50%) rotate(-2deg);
+    }
+    50%{
+        transform:translate(-50%,-50%) rotate(2deg);
+    }
+
+}
 
   /* ---------- set gallery ---------- */
   .set-gallery{
