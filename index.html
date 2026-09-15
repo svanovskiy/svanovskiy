@@ -7,7 +7,7 @@
 <meta name="description" content="Сергей Иванов — съёмка и монтаж видео для соцсетей, ведение сообществ ВКонтакте, работа с госструктурами, бизнесом и блогерами в Санкт-Петербурге и удалённо.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f2f1ed;
@@ -16,9 +16,14 @@
     --ink-soft:#6b665d;
     --accent:#6f8a63;
     --accent-soft:rgba(111,138,99,0.12);
-    --insta:#b98673;
-    --insta-soft:rgba(185,134,115,0.14);
     --line:rgba(44,42,38,0.14);
+
+    --tone-1:#cdd6c2;
+    --tone-2:#ddd0c2;
+    --tone-3:#d2c9c8;
+    --tone-4:#d8cdb0;
+    --tone-5:#c4cec9;
+    --tone-6:#d3c4b7;
   }
 
   *{box-sizing:border-box;}
@@ -37,12 +42,13 @@
     overflow-x:hidden;
   }
 
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    line-height:1.08;
+  h1,h2{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    line-height:1.1;
     margin:0;
   }
+  h3{ font-family:'Manrope', sans-serif; font-weight:700; margin:0; }
   p{ margin:0; }
   a{ color:inherit; text-decoration:none; }
 
@@ -53,7 +59,7 @@
     z-index:50;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:flex-end;
     padding:22px clamp(20px,5vw,64px);
     backdrop-filter:blur(10px);
     background:rgba(242,241,237,0.6);
@@ -63,12 +69,6 @@
   header.scrolled{
     border-bottom-color:var(--line);
     background:rgba(242,241,237,0.9);
-  }
-  .logo{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    font-size:1.15rem;
-    letter-spacing:0.01em;
   }
   nav ul{
     list-style:none;
@@ -95,7 +95,7 @@
   /* ---------- layout helpers ---------- */
   section{
     position:relative;
-    padding:clamp(70px,10vw,140px) clamp(20px,6vw,64px);
+    padding:clamp(56px,8vw,110px) clamp(20px,6vw,64px);
   }
   .wrap{ max-width:1120px; margin:0 auto; }
   .reveal{
@@ -112,74 +112,69 @@
   .hero{
     min-height:100svh;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding-top:120px;
+    align-items:center;
+    padding-top:110px;
   }
   .hero-intro{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr 1.05fr;
     align-items:center;
-    justify-content:space-between;
-    gap:clamp(28px,5vw,64px);
-    flex-wrap:wrap;
+    gap:clamp(10px,2.4vw,26px);
+    width:100%;
   }
-  .hero-textblock{ flex:1 1 420px; min-width:260px; }
+  .hero-textblock{ min-width:0; }
   .hero h1{
-    font-size:clamp(2.1rem, 4.4vw, 3.75rem);
-    text-transform:uppercase;
-    letter-spacing:0.01em;
+    font-size:clamp(2.5rem, 5.6vw, 4.4rem);
+    letter-spacing:-0.01em;
   }
   .slogan{
-    margin-top:20px;
-    max-width:44ch;
-    font-size:clamp(0.98rem,1.4vw,1.08rem);
+    margin-top:18px;
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(1rem,1.6vw,1.2rem);
     color:var(--ink-soft);
-    line-height:1.65;
   }
-  .hero-photo{
-    flex:0 0 auto;
-  }
+
   .photo-frame{
-    width:clamp(140px,18vw,220px);
-    height:clamp(140px,18vw,220px);
-    border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
-    background:#e4e2db center/cover no-repeat;
-    background-image:url('photo.jpg');
-    border:1px solid var(--line);
-    transform:scale(0.94);
-    opacity:0;
-    transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
-  }
-  .photo-frame.is-visible{ opacity:1; transform:scale(1); }
-
-  .capability-line{
-    margin-top:clamp(40px,6vw,64px);
-    font-size:clamp(1.05rem,2vw,1.3rem);
-    font-family:'Fraunces', serif;
-    max-width:32ch;
-    line-height:1.5;
-  }
-
-  .scroll-cue{
-    position:absolute;
-    bottom:44px; left:clamp(20px,6vw,64px);
-    display:flex; align-items:center; gap:10px;
-    font-size:0.82rem;
-    color:var(--ink-soft);
-  }
-  .scroll-cue .line{
-    width:1px; height:34px;
-    background:var(--ink-soft);
     position:relative;
-    overflow:hidden;
+    width:clamp(260px,36vw,480px);
+    aspect-ratio:4/5;
+    justify-self:end;
   }
-  .scroll-cue .line::after{
-    content:"";
-    position:absolute; top:-100%; left:0; right:0; height:100%;
-    background:var(--ink);
-    animation:cue 1.8s ease-in-out infinite;
+  .photo-layer{
+    position:absolute; inset:0;
+    background:#dcdad3 center/cover no-repeat;
+    background-image:url('photo.jpg');
   }
-  @keyframes cue{ 0%{ top:-100%; } 60%{ top:100%; } 100%{ top:100%; } }
+  .photo-blur{
+    filter:blur(24px) saturate(1.05);
+    transform:scale(1.1);
+    mask-image:radial-gradient(58% 58% at 50% 46%, black 50%, transparent 100%);
+    -webkit-mask-image:radial-gradient(58% 58% at 50% 46%, black 50%, transparent 100%);
+  }
+  .photo-sharp{
+    mask-image:
+      radial-gradient(42% 46% at 35% 30%, black 58%, transparent 100%),
+      radial-gradient(44% 44% at 68% 36%, black 58%, transparent 100%),
+      radial-gradient(46% 44% at 42% 70%, black 58%, transparent 100%),
+      radial-gradient(40% 40% at 72% 74%, black 55%, transparent 100%),
+      radial-gradient(34% 34% at 50% 50%, black 74%, transparent 100%);
+    -webkit-mask-image:
+      radial-gradient(42% 46% at 35% 30%, black 58%, transparent 100%),
+      radial-gradient(44% 44% at 68% 36%, black 58%, transparent 100%),
+      radial-gradient(46% 44% at 42% 70%, black 58%, transparent 100%),
+      radial-gradient(40% 40% at 72% 74%, black 55%, transparent 100%),
+      radial-gradient(34% 34% at 50% 50%, black 74%, transparent 100%);
+  }
+
+  /* ---------- banner ---------- */
+  .banner-section{ padding:0; }
+  .banner-img{
+    width:100%;
+    height:clamp(240px,42vw,440px);
+    object-fit:cover;
+    object-position:center 28%;
+    display:block;
+  }
 
   /* ---------- section headings ---------- */
   .section-head{
@@ -189,62 +184,91 @@
     max-width:640px;
     margin-bottom:clamp(44px,6vw,72px);
   }
-  .section-head h2{ font-size:clamp(1.8rem,3.4vw,2.6rem); }
+  .section-head h2{ font-size:clamp(1.6rem,3vw,2.2rem); }
   .section-head p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.6; }
 
-  /* ---------- specialisations ---------- */
-  .spec-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
-  }
-  .spec-card{
-    padding:32px 26px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:20px 20px 4px 20px;
-  }
-  .spec-card svg{ width:28px; height:28px; margin-bottom:20px; color:var(--accent); }
-  .spec-card h3{ font-size:1.15rem; margin-bottom:10px; font-weight:500; }
-  .spec-card p{ color:var(--ink-soft); font-size:0.95rem; line-height:1.6; }
-
   /* ---------- skills cloud ---------- */
+  #skills{ padding-top:clamp(20px,4vw,50px); }
   .skills-cloud{
     position:relative;
-    max-width:640px;
+    max-width:720px;
     margin:0 auto;
-    height:clamp(380px,54vw,480px);
+    height:clamp(560px,78vw,740px);
   }
+  .skills-center{
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    z-index:3;
+    width:clamp(260px,32vw,360px);
+    padding:36px 30px;
+    text-align:center;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
+  }
+  .skills-center h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:12px; }
+  .skills-center p{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; }
+
+  .capability-line{
+    margin:clamp(30px,5vw,54px) auto 0;
+    text-align:center;
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(1.05rem,2vw,1.3rem);
+    max-width:30ch;
+    line-height:1.5;
+    color:var(--ink);
+  }
+
   .skill-badge{
     position:absolute;
     transform:translate(-50%,-50%);
+    z-index:1;
+    max-width:190px;
+    padding:20px 24px;
     display:flex; align-items:center; justify-content:center;
     text-align:center;
-    padding:14px 20px;
-    border-radius:999px;
-    border:1px solid var(--line);
-    background:var(--panel);
-    color:var(--ink-soft);
-    font-size:0.84rem;
-    line-height:1.3;
+    font-family:'Manrope', sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    line-height:1.35;
+    color:var(--ink);
     cursor:default;
     animation:floaty var(--dur) ease-in-out var(--delay) infinite alternate;
-    transition:background .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
+    transition:filter .3s ease, box-shadow .3s ease;
   }
-  .skill-badge:hover{
-    background:var(--accent);
-    color:#fff;
-    border-color:var(--accent);
-    box-shadow:0 14px 28px -16px rgba(111,138,99,0.55);
-  }
-  .skill-badge.size-l{ padding:24px 30px; font-size:0.98rem; font-family:'Fraunces', serif; color:var(--ink); }
-  .skill-badge.size-l:hover{ color:#fff; }
-  .skill-badge.size-m{ max-width:168px; padding:16px 22px; }
-  .skill-badge.size-s{ max-width:142px; padding:12px 18px; font-size:0.76rem; }
+  .skill-badge:hover{ filter:brightness(0.93) saturate(1.15); box-shadow:0 14px 26px -16px rgba(44,42,38,0.35); }
+
+  .tone-1{ background:var(--tone-1); }
+  .tone-2{ background:var(--tone-2); }
+  .tone-3{ background:var(--tone-3); }
+  .tone-4{ background:var(--tone-4); }
+  .tone-5{ background:var(--tone-5); }
+  .tone-6{ background:var(--tone-6); }
+
+  .blob-a{ border-radius:42% 58% 61% 39% / 45% 40% 60% 55%; }
+  .blob-b{ border-radius:58% 42% 39% 61% / 55% 60% 40% 45%; }
+  .blob-c{ border-radius:50% 50% 42% 58% / 58% 42% 58% 42%; }
+  .blob-d{ border-radius:38% 62% 55% 45% / 50% 45% 55% 50%; }
+  .blob-e{ border-radius:62% 38% 48% 52% / 42% 55% 45% 58%; }
 
   @keyframes floaty{
     0%{ transform:translate(calc(-50% - var(--dx)), calc(-50% - var(--dy))); }
     100%{ transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))); }
+  }
+
+  /* ---------- set gallery ---------- */
+  .set-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:clamp(48px,7vw,72px);
+  }
+  .set-gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:20px;
   }
 
   /* ---------- timeline / experience ---------- */
@@ -252,11 +276,11 @@
     position:relative;
     display:flex;
     flex-direction:column;
-    gap:38px;
+    gap:30px;
     padding-left:30px;
     border-left:1px solid var(--line);
   }
-  .timeline-item{ position:relative; }
+  .timeline-item{ position:relative; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
   .timeline-item::before{
     content:"";
     position:absolute; left:-35px; top:6px;
@@ -265,6 +289,7 @@
     border:2px solid var(--bg);
   }
   .timeline-item.current::before{ background:var(--accent); }
+  .timeline-text{ flex:1 1 260px; }
   .timeline-tag{
     display:inline-block;
     font-size:0.72rem;
@@ -274,9 +299,15 @@
     border-radius:999px;
     margin-bottom:10px;
   }
-  .timeline-item h3{ font-size:1.1rem; font-weight:500; margin-bottom:3px; }
-  .timeline-company{ font-size:0.9rem; color:var(--ink-soft); margin-bottom:10px; }
-  .timeline-desc{ font-size:0.93rem; color:var(--ink-soft); line-height:1.65; max-width:64ch; }
+  .timeline-item h3{ font-size:1.08rem; margin-bottom:4px; }
+  .timeline-company{ font-size:0.9rem; color:var(--ink-soft); }
+  .timeline-photo{
+    width:150px;
+    height:98px;
+    border-radius:16px;
+    flex:0 0 auto;
+    background:#e4e1d8 center/cover no-repeat;
+  }
 
   /* ---------- portfolio ---------- */
   .filters{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:38px; }
@@ -329,7 +360,7 @@
     gap:8px;
   }
   .card-tag{ font-size:0.78rem; color:var(--ink-soft); }
-  .card-body h3{ font-size:1.06rem; font-weight:500; }
+  .card-body h3{ font-size:1.02rem; font-weight:600; }
   .card-body p{ color:var(--ink-soft); font-size:0.92rem; line-height:1.55; }
 
   /* ---------- about ---------- */
@@ -338,41 +369,23 @@
   .about-text p:last-child{ margin-bottom:0; }
 
   /* ---------- contacts ---------- */
-  .contact-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    align-items:flex-start;
-  }
+  .contact-row{ display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; }
   .contact-btn{
     display:inline-flex;
     align-items:center;
     padding:16px 30px;
     border-radius:999px;
-    font-family:'Fraunces', serif;
-    font-size:1.08rem;
+    font-family:'Archivo Black', sans-serif;
+    font-size:0.95rem;
     transition:transform .3s ease, box-shadow .3s ease;
   }
-  .contact-btn.telegram{
-    background:var(--accent);
+  .contact-btn.telegram{ background:#26A5E4; color:#fff; }
+  .contact-btn.telegram:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(38,165,228,0.6); }
+  .contact-btn.instagram{
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
     color:#fff;
   }
-  .contact-btn.telegram:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(111,138,99,0.6); }
-  .contact-btn.instagram{
-    background:var(--insta-soft);
-    color:var(--insta);
-    border:1px solid var(--insta);
-    cursor:default;
-  }
-  .contact-instagram-wrap{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
-  .legal-badge{
-    display:inline-block;
-    font-size:0.72rem;
-    color:var(--ink-soft);
-    background:rgba(44,42,38,0.06);
-    padding:5px 10px;
-    border-radius:999px;
-  }
+  .contact-btn.instagram:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(214,41,118,0.5); }
 
   footer{
     padding:34px clamp(20px,6vw,64px) 44px;
@@ -387,17 +400,14 @@
   footer .disclaimer{ max-width:62ch; line-height:1.6; }
 
   @media (max-width: 860px){
-    .spec-grid{ grid-template-columns:1fr; }
     nav ul{ gap:16px; font-size:0.85rem; }
-    .scroll-cue{ display:none; }
 
-    .hero{ justify-content:flex-start; padding-top:104px; min-height:auto; }
-    .hero-intro{ flex-direction:column; text-align:center; }
-    .hero-textblock{ order:1; }
-    .hero-photo{ order:2; margin-top:24px; }
+    .hero{ padding-top:100px; min-height:auto; }
+    .hero-intro{ grid-template-columns:1fr; text-align:center; }
+    .photo-frame{ justify-self:center; margin-top:22px; width:min(80vw,380px); }
     .slogan{ margin-left:auto; margin-right:auto; }
-    .capability-line{ margin-left:auto; margin-right:auto; text-align:center; }
     .section-head{ margin-left:auto; margin-right:auto; }
+    .set-gallery{ grid-template-columns:1fr; }
   }
   @media (max-width: 520px){
     header{ padding:16px 18px; }
@@ -408,7 +418,6 @@
 <body>
 
 <header id="siteHeader">
-  <a href="#top" class="logo">С. И.</a>
   <nav>
     <ul>
       <li><a href="#work">Работы</a></li>
@@ -422,42 +431,12 @@
   <div class="wrap">
     <div class="hero-intro">
       <div class="hero-textblock">
-        <h1 class="reveal">Сергей Иванов</h1>
-        <p class="slogan reveal reveal-delay-1">Делаю видео с душой: аккуратно, спокойно и красиво — так, чтобы результатом хотелось поделиться, а не просто выложить.</p>
+        <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
+        <p class="slogan reveal reveal-delay-1">Делаю видео с душой</p>
       </div>
-      <div class="hero-photo">
-        <div class="photo-frame reveal" id="heroPhoto"></div>
-      </div>
-    </div>
-    <p class="capability-line reveal reveal-delay-2">Снимаю, монтирую, веду соцсети. Работаю с госструктурами, бизнесом и блогерами в Санкт-Петербурге и удалённо.</p>
-  </div>
-  <div class="scroll-cue">
-    <span class="line"></span>
-    <span>Прокрутите</span>
-  </div>
-</section>
-
-<section id="specialisations">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Чем занимаюсь</h2>
-      <p>Три направления, в которых работаю каждый день: от коротких вертикальных роликов до полного сопровождения соцсетей бренда.</p>
-    </div>
-    <div class="spec-grid">
-      <div class="spec-card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg>
-        <h3>Рилсы и контент для соцсетей</h3>
-        <p>Монтаж роликов для Instagram и TikTok, съёмка для YouTube. Работаю с блогерами, врачами и бьюти-мастерами — от идеи до готового кадра.</p>
-      </div>
-      <div class="spec-card reveal reveal-delay-1">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4-3h8l4 3M4 8v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M4 8h16"/><circle cx="12" cy="14" r="3.2"/></svg>
-        <h3>Съёмка городских событий</h3>
-        <p>Снимаю и монтирую сюжеты для администраций районов Санкт-Петербурга: праздники, открытия, интервью с жителями.</p>
-      </div>
-      <div class="spec-card reveal reveal-delay-2">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
-        <h3>Ведение сообществ ВКонтакте</h3>
-        <p>Оформление и наполнение групп: клиникам и бьюти-пространствам, которые хотят живую, регулярно обновляемую страницу.</p>
+      <div class="photo-frame reveal reveal-delay-1">
+        <div class="photo-layer photo-blur"></div>
+        <div class="photo-layer photo-sharp"></div>
       </div>
     </div>
   </div>
@@ -465,65 +444,99 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
-      <h2>Что я умею</h2>
-      <p style="margin-left:auto;margin-right:auto;">Полный цикл создания контента — от идеи и съёмки до публикации и аналитики.</p>
-    </div>
     <div class="skills-cloud" id="skillsCloud">
-      <div class="skill-badge size-l" style="left:36%; top:10%; --dur:9s; --delay:0s; --dx:10px; --dy:8px;">Съёмка</div>
-      <div class="skill-badge size-l" style="left:12%; top:42%; --dur:11s; --delay:.6s; --dx:9px; --dy:10px;">Видеомонтаж</div>
-      <div class="skill-badge size-m" style="left:64%; top:28%; --dur:8s; --delay:.3s; --dx:8px; --dy:7px;">Режиссура</div>
-      <div class="skill-badge size-m" style="left:34%; top:62%; --dur:10s; --delay:.9s; --dx:7px; --dy:9px;">Публикация контента</div>
-      <div class="skill-badge size-m" style="left:68%; top:66%; --dur:12s; --delay:.4s; --dx:9px; --dy:6px;">Ведение под ключ сообщества</div>
-      <div class="skill-badge size-s" style="left:8%; top:74%; --dur:9.5s; --delay:.7s; --dx:6px; --dy:8px;">Создание групп ВК</div>
-      <div class="skill-badge size-s" style="left:85%; top:10%; --dur:10.5s; --delay:.2s; --dx:8px; --dy:6px;">Написание постов</div>
-      <div class="skill-badge size-s" style="left:48%; top:88%; --dur:11.5s; --delay:1s; --dx:7px; --dy:7px;">Аналитика и отработка комментариев</div>
+      <div class="skills-center reveal">
+        <h2>Что я умею</h2>
+        <p>Полный цикл создания контента — от идеи до публикации и аналитики.</p>
+      </div>
+
+      <div class="skill-badge tone-1 blob-a" style="left:14%; top:10%; --dur:12s; --delay:0s; --dx:5px; --dy:4px;">Съёмка</div>
+      <div class="skill-badge tone-2 blob-b" style="left:47%; top:4%; --dur:13.5s; --delay:.5s; --dx:4px; --dy:5px;">Режиссура</div>
+      <div class="skill-badge tone-3 blob-c" style="left:82%; top:12%; --dur:11s; --delay:.2s; --dx:4px; --dy:5px;">Написание постов</div>
+      <div class="skill-badge tone-4 blob-d" style="left:27%; top:25%; --dur:14s; --delay:.7s; --dx:5px; --dy:4px;">Настройка Taplink</div>
+      <div class="skill-badge tone-5 blob-e" style="left:65%; top:27%; --dur:12.5s; --delay:.3s; --dx:4px; --dy:5px;">Позиционирование</div>
+      <div class="skill-badge tone-6 blob-a" style="left:8%; top:27%; --dur:13s; --delay:.9s; --dx:4px; --dy:5px;">Отрисовка карточек в Figma</div>
+      <div class="skill-badge tone-1 blob-b" style="left:46%; top:31%; --dur:15s; --delay:.4s; --dx:5px; --dy:4px;">Видеомонтаж в программах Adobe Premiere Pro и CapCut</div>
+
+      <div class="skill-badge tone-2 blob-c" style="left:11%; top:69%; --dur:12s; --delay:.6s; --dx:4px; --dy:4px;">Ведение сообществ в ВК</div>
+      <div class="skill-badge tone-3 blob-d" style="left:81%; top:69%; --dur:13.5s; --delay:.1s; --dx:4px; --dy:5px;">Создание групп в ВК</div>
+      <div class="skill-badge tone-4 blob-e" style="left:46%; top:66%; --dur:14.5s; --delay:.8s; --dx:5px; --dy:4px;">Ведение личных страниц</div>
+      <div class="skill-badge tone-5 blob-a" style="left:65%; top:80%; --dur:12.5s; --delay:.4s; --dx:4px; --dy:5px;">Аналитика и отработка негативных комментариев</div>
+      <div class="skill-badge tone-6 blob-b" style="left:23%; top:87%; --dur:13s; --delay:.2s; --dx:4px; --dy:4px;">Создание Reels / Shorts / Клипов и их выкладка</div>
+      <div class="skill-badge tone-1 blob-c" style="left:52%; top:92%; --dur:14s; --delay:.6s; --dx:5px; --dy:4px;">Создание группы ВК под ключ</div>
     </div>
+
+    <p class="capability-line reveal">Снимаю, монтирую, веду соцсети. Работаю с госструктурами, бизнесом, блогерами в Санкт-Петербурге и удалённо.</p>
   </div>
+</section>
+
+<section class="banner-section">
+  <img class="banner-img reveal" src="banner.jpg" alt="Съёмка на площадке">
 </section>
 
 <section id="experience">
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Опыт работы</h2>
-      <p>С видео я работаю на постоянной основе — от новостных сюжетов до полного ведения соцсетей бренда.</p>
     </div>
+
+    <div class="set-gallery">
+      <img class="reveal" src="gallery-1.jpg" alt="Съёмка интервью на площадке">
+      <img class="reveal reveal-delay-1" src="gallery-2.jpg" alt="Работа с двумя камерами на съёмке">
+    </div>
+
     <div class="timeline">
       <div class="timeline-item current reveal">
-        <span class="timeline-tag">Сейчас</span>
-        <h3>Оператор-видеомонтажёр</h3>
-        <p class="timeline-company">АНО «Медиадом»</p>
-        <p class="timeline-desc">Новости для «Петербургского дневника» и «Вечернего Петербурга». Спокойный государственный формат для администраций Юго-Запада города — Красносельский, Пушкинский, Петродворцовый, Кронштадтский и Колпинский районы.</p>
+        <div class="timeline-text">
+          <span class="timeline-tag">Сейчас</span>
+          <h3>Оператор-видеомонтажёр</h3>
+          <p class="timeline-company">АНО «Медиадом»</p>
+        </div>
       </div>
       <div class="timeline-item reveal">
-        <h3>SMM-специалист / Оператор</h3>
-        <p class="timeline-company">АО «Петроцентр»</p>
-        <p class="timeline-desc">Два направления: отработка репутации правительства Санкт-Петербурга (аналитика негативных комментариев) и сектор здравоохранения — съёмка больниц, поликлиник, врачей, написание постов. Вёл паблик «Петербург здоровый».</p>
+        <div class="timeline-text">
+          <h3>SMM-специалист / Оператор</h3>
+          <p class="timeline-company">АО «Петроцентр»</p>
+        </div>
+        <div class="timeline-photo" style="background-image:url('petrocenter.jpg');"></div>
       </div>
       <div class="timeline-item reveal">
-        <h3>SMM-специалист</h3>
-        <p class="timeline-company">ЦУР — Центр управления регионом</p>
-        <p class="timeline-desc">Съёмка, монтаж, ведение групп. Вёл паблики «Мой Петербург», «Новости и недвижимость», «Из Петербурга с любовью» — работа с многотысячной аудиторией.</p>
+        <div class="timeline-text">
+          <h3>SMM-специалист</h3>
+          <p class="timeline-company">ЦУР — Центр управления регионом</p>
+        </div>
       </div>
       <div class="timeline-item reveal">
-        <h3>Обзоры ресторанов</h3>
-        <p class="timeline-company">«По поребрику в Парадную»</p>
-        <p class="timeline-desc">Снимал ресторанные обзоры: Chang, Goose Goose, Itameshi и другие.</p>
+        <div class="timeline-text">
+          <h3>Ведение пабликов</h3>
+          <p class="timeline-company">«Мой Петербург», «Новости и недвижимость», «Из Петербурга с любовью»</p>
+        </div>
       </div>
       <div class="timeline-item reveal">
-        <h3>Экспертные рилсы для блогеров</h3>
-        <p class="timeline-company">Команды рилсмейкеров / личное сотрудничество</p>
-        <p class="timeline-desc">Создание экспертного контента для блогеров: индивидуальное сотрудничество и работа в командах рилсмейкеров.</p>
+        <div class="timeline-text">
+          <h3>Обзоры ресторанов</h3>
+          <p class="timeline-company">Telegram-канал «По поребрику в Парадную»</p>
+        </div>
       </div>
       <div class="timeline-item reveal">
-        <h3>SMM под ключ</h3>
-        <p class="timeline-company">Клиника им. Пьера Волькенштейна</p>
-        <p class="timeline-desc">Полный цикл: съёмка, монтаж, написание постов, обработка карточек, согласование. Instagram и ВКонтакте — группа ВК сделана с нуля, все работы внутри группы.</p>
+        <div class="timeline-text">
+          <h3>Экспертные рилсы для блогеров</h3>
+          <p class="timeline-company">Команды рилсмейкеров / личное сотрудничество</p>
+        </div>
       </div>
       <div class="timeline-item reveal">
-        <h3>SMM под ключ</h3>
-        <p class="timeline-company">МИНТ, бьюти-пространство</p>
-        <p class="timeline-desc">Группа ВК сделана полностью с нуля. Экспертный формат — публикации в Instagram и ВКонтакте.</p>
+        <div class="timeline-text">
+          <h3>SMM под ключ</h3>
+          <p class="timeline-company">Клиника им. Пьера Волькенштейна</p>
+        </div>
+        <div class="timeline-photo" style="background-image:url('clinic.jpg');"></div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-text">
+          <h3>SMM под ключ</h3>
+          <p class="timeline-company">МИНТ, бьюти-пространство</p>
+        </div>
+        <div class="timeline-photo" style="background-image:url('mint.jpg');"></div>
       </div>
     </div>
   </div>
@@ -533,7 +546,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Работы</h2>
-      <p>Часть проектов последнего времени — сотрудничество с бьюти-пространствами, клиниками, школой и администрациями районов. Нажмите на карточку, чтобы посмотреть работу.</p>
+      <p>Небольшая часть проектов последнего времени. Нажмите на карточку, чтобы перейти к просмотру работы.</p>
     </div>
 
     <div class="filters reveal">
@@ -548,7 +561,7 @@
       <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DWZUUXSCH44/?stkn=MWFmaGEwbjV4NDZ3Zg==" target="_blank" rel="noopener">
         <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="card-body">
-          <span class="card-tag">Рилс · Instagram</span>
+          <span class="card-tag">Рилс · Instagram*</span>
           <h3>Сотрудничество с МИНТ</h3>
           <p>Рилс для бьюти-пространства МИНТ.</p>
         </div>
@@ -557,7 +570,7 @@
       <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DXtbNd2xWqe/?stkn=ZW9yOTJzeDJtNGZr" target="_blank" rel="noopener">
         <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="card-body">
-          <span class="card-tag">Рилс · Instagram</span>
+          <span class="card-tag">Рилс · Instagram*</span>
           <h3>Сотрудничество с МИНТ</h3>
           <p>Второй рилс для бьюти-пространства МИНТ.</p>
         </div>
@@ -575,7 +588,7 @@
       <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DWBvUYPDGp6/?stkn=MWdldGZzbzBuN3Jjbg==" target="_blank" rel="noopener">
         <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="card-body">
-          <span class="card-tag">Рилс · Instagram</span>
+          <span class="card-tag">Рилс · Instagram*</span>
           <h3>Сотрудничество с дерматологической клиникой</h3>
           <p>Рилс с личным участием — съёмка и монтаж.</p>
         </div>
@@ -584,7 +597,7 @@
       <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DTkmXJMDPJ-/?stkn=MW1sdzV5bDltYTF2YQ==" target="_blank" rel="noopener">
         <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="card-body">
-          <span class="card-tag">Рилс · Instagram</span>
+          <span class="card-tag">Рилс · Instagram*</span>
           <h3>Сотрудничество с клиникой им. Пьера Волькенштейна</h3>
           <p>Рилс для врача клиники.</p>
         </div>
@@ -593,7 +606,7 @@
       <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DdGNmlYMBWV/?stkn=MWhwcXIxNXJoZzRkag==" target="_blank" rel="noopener">
         <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="card-body">
-          <span class="card-tag">Рилс · Instagram</span>
+          <span class="card-tag">Рилс · Instagram*</span>
           <h3>Сотрудничество со школой Проборы</h3>
           <p>Рилс для преподавателя школы дополнительного образования.</p>
         </div>
@@ -663,7 +676,7 @@
       <h2>Обо мне</h2>
     </div>
     <div class="about-text">
-      <p class="reveal">Меня зовут Сергей. Снимаю и монтирую видео для соцсетей: рилсы для Instagram и TikTok, ролики для YouTube. Работаю с блогерами, врачами и бьюти-мастерами, которые хотят получать контент, а не просто отснятый материал.</p>
+      <p class="reveal">Меня зовут Сергей. Снимаю и монтирую видео для соцсетей: рилсы для Instagram* и TikTok, ролики для YouTube. Работаю с блогерами, врачами и бьюти-мастерами, которые хотят получать контент, а не просто отснятый материал.</p>
       <p class="reveal reveal-delay-1">Отдельное направление — сотрудничество с администрациями районов Санкт-Петербурга: снимаю и монтирую сюжеты о городских событиях, праздниках и людях, о которых стоит рассказать.</p>
       <p class="reveal reveal-delay-2">Также веду сообщества ВКонтакте для клиник и бьюти-пространств — от оформления страницы до регулярных публикаций, которые держат группу живой.</p>
     </div>
@@ -678,10 +691,7 @@
     </div>
     <div class="contact-row">
       <a class="contact-btn telegram reveal" href="https://t.me/VlasOdinsov" target="_blank" rel="noopener">Telegram</a>
-      <div class="contact-instagram-wrap reveal reveal-delay-1">
-        <span class="legal-badge">Meta признана экстремистской организацией в РФ*</span>
-        <span class="contact-btn instagram">Instagram*</span>
-      </div>
+      <a class="contact-btn instagram reveal reveal-delay-1" href="https://www.instagram.com/svanovskiy?stkn=MTIxMXplbmtqOWw3bA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram*</a>
     </div>
   </div>
 </section>
@@ -705,7 +715,7 @@
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
   revealEls.forEach(el => revealObserver.observe(el));
 
   const filterBtns = document.querySelectorAll('.filter-btn');
