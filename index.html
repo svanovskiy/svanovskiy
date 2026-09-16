@@ -194,20 +194,38 @@
   #skills{ padding-top:clamp(20px,4vw,50px); }
 .skills-cloud{
     position:relative;
-    max-width:980px;
-    margin:40px auto;
-    height:clamp(760px,85vw,980px);
+
+    width:min(100%,1000px);
+
+    height:700px;
+
+    margin:70px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
 }
 .skills-center{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    z-index:5;
 
-    width:clamp(380px,42vw,500px);
+    position:relative;
 
-    padding:60px 50px;
+    z-index:20;
+
+    width:430px;
+
+    height:430px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
 
     text-align:center;
 
@@ -215,9 +233,10 @@
 
     border:1px solid var(--line);
 
-    border-radius:58% 42% 47% 53% / 49% 55% 45% 51%;
+    border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
 
-    box-shadow:0 30px 60px rgba(0,0,0,.05);
+    box-shadow:0 30px 70px rgba(0,0,0,.06);
+
 }
   .skills-center h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:12px; }
   .skills-center p{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; }
