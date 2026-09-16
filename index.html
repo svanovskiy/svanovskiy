@@ -772,15 +772,14 @@
     background:transparent; /* не нужен фон, фото с contain */
   }
   
-#heroPhoto{
+  #heroPhoto{
     display:block;
     width:100%;
     height:auto;
-    aspect-ratio:16 / 9;      /* стартовая форма-полоска */
-    object-fit:contain;        /* ← вот ключевое: без зума, без обрезки */
-    object-position:center;
-    transition:aspect-ratio .15s linear;
-    will-change:height, aspect-ratio;
+    aspect-ratio:16 / 9;      /* стартовая форма — полоска */
+    object-fit:cover;         /* как в первом рабочем варианте */
+    object-position:50% 25%;  /* лицо в кадре */
+    will-change:height;
   }
   
 }
@@ -1201,7 +1200,6 @@ function updateHeroPhoto() {
 
   if (!mobileMQ.matches) {
     heroPhoto.style.height = '';
-    heroPhoto.style.aspectRatio = '';
     return;
   }
 
@@ -1209,18 +1207,16 @@ function updateHeroPhoto() {
   const vh   = window.innerHeight;
   const w    = heroPhoto.offsetWidth;
 
-  // Прогресс 0..1 по позиции фото в скролле
   const startY = vh;
   const endY   = vh * 0.3;
   const t = (startY - rect.top) / (startY - endY);
   const progress = Math.min(Math.max(t, 0), 1);
 
-  // Старт: 16:9, финиш: 5:7 — считаем от ширины
-  const startH = w * (9 / 16);   // ≈ 0.5625 * w
-  const endH   = w * (7 / 5);    // = 1.4 * w
+  // Старт: 16:9 (полоска), финиш: 5:7 (как оригинал)
+  const startH = w * (9 / 16);
+  const endH   = w * (7 / 5);
 
-  const h = startH + (endH - startH) * progress;
-  heroPhoto.style.height = h + 'px';
+  heroPhoto.style.height = (startH + (endH - startH) * progress) + 'px';
 }
 
 let rafPending = false;
