@@ -1202,6 +1202,8 @@ function naturalRatio() {
   return 4 / 3;
 }
 
+const REVEAL_DISTANCE = 320;
+  
 function updateHeroPhoto() {
   if (!heroPhoto || !heroPhotoWrap) return;
 
@@ -1210,22 +1212,15 @@ function updateHeroPhoto() {
     return;
   }
 
-  const rect = heroPhotoWrap.getBoundingClientRect();
-  const vh   = window.innerHeight;
-  const w    = heroPhotoWrap.offsetWidth;
-
-  // Прогресс 0..1 по положению блока в скролле
-  const startY = vh;         // блок у нижнего края экрана
-  const endY   = vh * 0.25;  // блок почти у верха
-  const raw = (startY - rect.top) / (startY - endY);
-  const progress = Math.min(Math.max(raw, 0), 1);
+  const progress = Math.min(Math.max(window.scrollY / REVEAL_DISTANCE, 0), 1);
+  const w = heroPhotoWrap.offsetWidth;
 
   const startH = w * (9 / 16);        // старт: 16:9-полоска
   const endH   = w * naturalRatio();  // финал: настоящие пропорции фото
 
   heroPhotoWrap.style.height = (startH + (endH - startH) * progress) + 'px';
 }
-
+  
 let rafPending = false;
 function onScrollHero() {
   if (rafPending) return;
