@@ -772,15 +772,14 @@
     will-change:height;
   }
 
-  #heroPhoto{
-    display:block;
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    height:auto;              /* ключевая строка: масштаб фото зависит ТОЛЬКО от ширины
-                                  и никогда не меняется — значит, зума не будет физически,
-                                  при любой высоте окна пиксельный размер картинки один и тот же */
-  }
+#heroPhoto{
+  display:block;
+  position:absolute;
+  top:38%; left:0;
+  transform:translateY(-38%);
+  width:100%;
+  height:auto;
+}
   
 }
   
@@ -1128,6 +1127,10 @@ Reels / Shorts / Клипы
 </footer>
 
 <script>
+  if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
