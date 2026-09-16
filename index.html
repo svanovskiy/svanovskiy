@@ -590,8 +590,6 @@
     left:auto;
     top:auto;
 
-    transform:none !important;
-
     width:100%;
 
     height:96px;
@@ -618,9 +616,21 @@
 
     line-height:1.25;
 
-    word-break:keep-all;
+    word-break:normal;
 
-    overflow-wrap:anywhere;
+    overflow-wrap:normal;
+
+    white-space:normal;
+
+    animation:none !important;
+
+    opacity:0;
+
+    transform:translateY(24px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,.61,.36,1);
 
 }
 
@@ -635,18 +645,6 @@
     font-size:1rem;
 
     padding:18px;
-
-}
-
-.skill-badge{
-
-    opacity:0;
-
-    transform:translateY(25px);
-
-    transition:
-        opacity .5s ease,
-        transform .5s ease;
 
 }
 
@@ -721,12 +719,12 @@ style="--x:-350px; --y:-90px; animation:floatRotate 11s ease-in-out infinite;">
 
 <div class="skill-badge reveal tone-5 blob-e"
 style="--x:350px; --y:-90px; animation:floatUp 13s ease-in-out infinite;">
-Позиционирование
+Продвижение необходимой повестки
 </div>
 
 <div class="skill-badge reveal tone-6 blob-a"
 style="--x:-360px; --y:50px; animation:floatSide 10s ease-in-out infinite;">
-Отрисовка карточек в Figma
+Отрисовка карточек<br>в Figma
 </div>
 
 <div class="skill-badge reveal big tone-1 blob-b"
@@ -751,7 +749,7 @@ style="--x:0px; --y:320px; animation:floatRotate 12s ease-in-out infinite;">
 
 <div class="skill-badge reveal tone-5 blob-a"
 style="--x:300px; --y:340px; animation:floatUp 10s ease-in-out infinite;">
-Аналитика и работа<br>с комментариями
+Аналитика<br>и работа с<br>комментариями
 </div>
 
 <div class="skill-badge reveal tone-6 blob-b"
