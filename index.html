@@ -165,37 +165,53 @@
   background-color:#dcdad3;
   background-image:url('photo.jpg');
   background-repeat:no-repeat;
-  background-size:auto 122%;
-  background-position:82% 30%;
+  background-size:auto 132%;
+  background-position:100% 30%;
 }
 
 /* размытая атмосфера — акцент на правую половину */
 .hero-media-blur{
-  filter:blur(60px) saturate(1.08) brightness(0.95);
-  transform:scale(1.08);
+  background-position:100% 30%;
+  filter:blur(70px) saturate(1.08) brightness(0.95);
+  transform:scale(1.1);
   opacity:.55;
-  -webkit-mask-image:linear-gradient(to left, #000 30%, transparent 72%);
-          mask-image:linear-gradient(to left, #000 30%, transparent 72%);
+  -webkit-mask-image:linear-gradient(to left, #000 45%, transparent 88%);
+          mask-image:linear-gradient(to left, #000 45%, transparent 88%);
 }
 
 /* чёткий слой — лицо + плечи */
 .hero-media-sharp{
-  background-position:82% 32%;
+  background-position:100% 32%;
   filter:brightness(0.98) contrast(1.05);
   -webkit-mask-image:
-    radial-gradient(34% 46% at 82% 32%, #000 62%, transparent 100%),
-    radial-gradient(52% 62% at 82% 55%, #000 42%, transparent 100%);
+    radial-gradient(34% 46% at 78% 32%, #000 60%, transparent 100%),
+    radial-gradient(56% 66% at 78% 58%, #000 40%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 28%, #000 100%);
           mask-image:
-    radial-gradient(34% 46% at 82% 32%, #000 62%, transparent 100%),
-    radial-gradient(52% 62% at 82% 55%, #000 42%, transparent 100%);
+    radial-gradient(34% 46% at 78% 32%, #000 60%, transparent 100%),
+    radial-gradient(56% 66% at 78% 58%, #000 40%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 28%, #000 100%);
 }
 
 .hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
   background:
-    radial-gradient(115% 90% at 82% 38%,
-      transparent 34%,
-      rgba(242,241,237,0.55) 76%,
-      rgba(242,241,237,0.92) 100%);
+    /* сильное растворение слева */
+    linear-gradient(to right,
+      rgba(242,241,237,1) 0%,
+      rgba(242,241,237,0.75) 14%,
+      rgba(242,241,237,0.2) 26%,
+      transparent 38%),
+    /* мягкое затемнение сверху и снизу */
+    linear-gradient(to bottom,
+      rgba(242,241,237,0.35) 0%,
+      transparent 18%,
+      transparent 78%,
+      rgba(242,241,237,0.55) 100%);
 }
 
   .hero-wrap{
@@ -748,23 +764,24 @@
     letter-spacing:0.02em;
   }
 
-  /* Показываем мобильное фото-полоску */
   .hero-photo-mobile{
     display:block;
     width:100%;
     border-radius:22px;
     overflow:hidden;
-    background:#dcdad3;
+    background:transparent; /* не нужен фон, фото с contain */
   }
+  
 #heroPhoto{
-  display:block;
-  width:100%;
-  height:auto;              /* JS подставит нужное */
-  aspect-ratio:16 / 9;      /* стартовая форма, пока JS не загрузился */
-  object-fit:cover;
-  object-position:50% 22%;  /* лицо остаётся в кадре при обрезке */
-  will-change:height;
-}
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:16 / 9;      /* стартовая форма-полоска */
+    object-fit:contain;        /* ← вот ключевое: без зума, без обрезки */
+    object-position:center;
+    transition:aspect-ratio .15s linear;
+    will-change:height, aspect-ratio;
+  }
   
 }
   
@@ -1175,7 +1192,7 @@ filterBtns.forEach(btn => {
     });
   });
 
- /* ===== Рост фото в hero на мобилке ===== */
+/* ===== Рост фото в hero на мобилке ===== */
 const heroPhoto = document.getElementById('heroPhoto');
 const mobileMQ  = window.matchMedia('(max-width:860px)');
 
@@ -1184,12 +1201,13 @@ function updateHeroPhoto() {
 
   if (!mobileMQ.matches) {
     heroPhoto.style.height = '';
+    heroPhoto.style.aspectRatio = '';
     return;
   }
 
   const rect = heroPhoto.getBoundingClientRect();
   const vh   = window.innerHeight;
-  const w    = heroPhoto.offsetWidth;   // ширина фото = ширина контейнера
+  const w    = heroPhoto.offsetWidth;
 
   // Прогресс 0..1 по позиции фото в скролле
   const startY = vh;
@@ -1197,12 +1215,12 @@ function updateHeroPhoto() {
   const t = (startY - rect.top) / (startY - endY);
   const progress = Math.min(Math.max(t, 0), 1);
 
-  // Старт: 16:9 → высота = ширина * 9/16
-  // Финиш: 5:7 → высота = ширина * 7/5
-  const startH = w * (9 / 16);
-  const endH   = w * (7 / 5);
+  // Старт: 16:9, финиш: 5:7 — считаем от ширины
+  const startH = w * (9 / 16);   // ≈ 0.5625 * w
+  const endH   = w * (7 / 5);    // = 1.4 * w
 
-  heroPhoto.style.height = (startH + (endH - startH) * progress) + 'px';
+  const h = startH + (endH - startH) * progress;
+  heroPhoto.style.height = h + 'px';
 }
 
 let rafPending = false;
