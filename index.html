@@ -253,25 +253,39 @@
 
 .skill-badge{
     position:absolute;
-    transform:translate(-50%,-50%);
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%, -50%)
+        translate(var(--x), var(--y));
+
     z-index:2;
+
     max-width:260px;
     min-height:76px;
+
     padding:22px 30px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
     font-family:'Manrope', sans-serif;
     font-weight:700;
     font-size:.95rem;
     line-height:1.35;
+
     color:var(--ink);
+
     cursor:default;
+
     transition:
         transform .3s ease,
         box-shadow .3s ease;
-
 }
   .skill-badge.big{
     max-width:320px;
@@ -298,32 +312,29 @@
 
   @keyframes floatUp{
     0%,100%{
-        transform:translate(-50%,-50%) translateY(-8px);
-    }
-    50%{
-        transform:translate(-50%,-50%) translateY(8px);
-    }
+    transform:
+    translate(-50%,-50%)
+    translate(var(--x), var(--y))
+    translateY(-8px);
 
 }
 
 @keyframes floatSide{
     0%,100%{
-        transform:translate(-50%,-50%) translateX(-8px);
-    }
-    50%{
-        transform:translate(-50%,-50%) translateX(8px);
-    }
+    transform:
+    translate(-50%,-50%)
+    translate(var(--x), var(--y))
+    translateY(-8px);
 
 }
 
 @keyframes floatRotate{
 
     0%,100%{
-        transform:translate(-50%,-50%) rotate(-2deg);
-    }
-    50%{
-        transform:translate(-50%,-50%) rotate(2deg);
-    }
+    transform:
+    translate(-50%,-50%)
+    translate(var(--x), var(--y))
+    translateY(-8px);
 
 }
 
@@ -521,62 +532,62 @@
       </div>
 
       <div class="skill-badge big tone-1 blob-a"
-style="left:17%; top:16%; animation:floatUp 9s ease-in-out infinite;">
+style="--x:-300px; --y:-220px; animation:floatUp 9s ease-in-out infinite;">
 Съёмка
 </div>
 
 <div class="skill-badge tone-2 blob-b"
-style="left:50%; top:8%; animation:floatRotate 12s ease-in-out infinite;">
+style="--x:0px; --y:-270px; animation:floatRotate 12s ease-in-out infinite;">
 Режиссура
 </div>
 
 <div class="skill-badge tone-3 blob-c"
-style="left:83%; top:17%; animation:floatSide 10s ease-in-out infinite;">
+style="--x:300px; --y:-220px; animation:floatSide 10s ease-in-out infinite;">
 Написание постов
 </div>
 
 <div class="skill-badge tone-4 blob-d"
-style="left:10%; top:34%; animation:floatRotate 11s ease-in-out infinite;">
+style="--x:-360px; --y:-70px; animation:floatRotate 11s ease-in-out infinite;">
 Настройка Taplink
 </div>
 
 <div class="skill-badge tone-5 blob-e"
-style="left:77%; top:34%; animation:floatUp 13s ease-in-out infinite;">
+style="--x:360px; --y:-70px; animation:floatUp 13s ease-in-out infinite;">
 Позиционирование
 </div>
 
 <div class="skill-badge tone-6 blob-a"
-style="left:24%; top:50%; animation:floatSide 10s ease-in-out infinite;">
+style="--x:-320px; --y:120px; animation:floatSide 10s ease-in-out infinite;">
 Отрисовка карточек в Figma
 </div>
 
 <div class="skill-badge big tone-1 blob-b"
-style="left:76%; top:50%; animation:floatRotate 14s ease-in-out infinite;">
+style="--x:320px; --y:120px; animation:floatRotate 14s ease-in-out infinite;">
 Видеомонтаж<br>Premiere Pro / CapCut
 </div>
 
 <div class="skill-badge big tone-2 blob-c"
-style="left:18%; top:73%; animation:floatUp 11s ease-in-out infinite;">
+style="--x:-250px; --y:260px; animation:floatUp 11s ease-in-out infinite;">
 Ведение сообществ<br>ВКонтакте
 </div>
 
 <div class="skill-badge tone-3 blob-d"
-style="left:83%; top:72%; animation:floatSide 10s ease-in-out infinite;">
+style="--x:250px; --y:260px; animation:floatSide 10s ease-in-out infinite;">
 Создание групп ВК
 </div>
 
 <div class="skill-badge tone-4 blob-e"
-style="left:50%; top:90%; animation:floatRotate 12s ease-in-out infinite;">
+style="--x:0px; --y:320px; animation:floatRotate 12s ease-in-out infinite;">
 Ведение личных страниц
 </div>
 
 <div class="skill-badge tone-5 blob-a"
-style="left:73%; top:89%; animation:floatUp 10s ease-in-out infinite;">
+style="--x:300px; --y:340px; animation:floatUp 10s ease-in-out infinite;">
 Аналитика и работа<br>с комментариями
 </div>
 
 <div class="skill-badge tone-6 blob-b"
-style="left:27%; top:89%; animation:floatSide 13s ease-in-out infinite;">
+style="--x:-300px; --y:340px; animation:floatSide 13s ease-in-out infinite;">
 Reels / Shorts / Клипы
 </div>
     </div>
