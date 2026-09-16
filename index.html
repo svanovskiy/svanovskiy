@@ -764,23 +764,23 @@
     letter-spacing:0.02em;
   }
 
-  .hero-photo-mobile{
-    display:block;
-    width:100%;
-    border-radius:22px;
-    overflow:hidden;
-    background:transparent; /* не нужен фон, фото с contain */
-  }
+.hero-photo-mobile{
+  display:block;
+  width:100%;
+  border-radius:22px;
+  overflow:hidden;
+  background:#dcdad3;
+}
   
-  #heroPhoto{
-    display:block;
-    width:100%;
-    height:auto;
-    aspect-ratio:16 / 9;      /* стартовая форма — полоска */
-    object-fit:cover;         /* как в первом рабочем варианте */
-    object-position:50% 25%;  /* лицо в кадре */
-    will-change:height;
-  }
+#heroPhoto{
+  display:block;
+  width:100%;
+  height:56.25vw;        
+  object-fit:cover;
+  object-position:50% 25%;
+  will-change:height;
+  transition:none;
+}
   
 }
   
