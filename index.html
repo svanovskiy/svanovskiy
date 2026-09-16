@@ -140,63 +140,93 @@
 
 }
   
-  /* ---------- hero ---------- */
-  .hero{
-    min-height:100svh;
-    display:flex;
-    align-items:center;
-    padding-top:110px;
-  }
-  .hero-intro{
-    display:grid;
-    grid-template-columns:1fr 1.05fr;
-    align-items:center;
-    gap:clamp(10px,2.4vw,26px);
-    width:100%;
-  }
-  .hero-textblock{ min-width:0; }
-  .hero h1{
-    font-size:clamp(2.5rem, 5.6vw, 4.4rem);
-    letter-spacing:-0.01em;
-  }
-  .slogan{
-    margin-top:18px;
-    font-family:'Archivo Black', sans-serif;
-    font-size:clamp(1rem,1.6vw,1.2rem);
-    color:var(--ink-soft);
-  }
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  padding:120px clamp(20px,6vw,64px) 70px;
+  overflow:hidden;
+  isolation:isolate;
+}
 
-  .photo-frame{
-    position:relative;
-    width:clamp(260px,36vw,480px);
-    aspect-ratio:4/5;
-    justify-self:end;
-  }
-  .photo-layer{
-    position:absolute; inset:0;
-    background:#dcdad3 center/cover no-repeat;
-    background-image:url('photo.jpg');
-  }
-  .photo-blur{
-    filter:blur(24px) saturate(1.05);
-    transform:scale(1.1);
-    mask-image:radial-gradient(58% 58% at 50% 46%, black 50%, transparent 100%);
-    -webkit-mask-image:radial-gradient(58% 58% at 50% 46%, black 50%, transparent 100%);
-  }
-  .photo-sharp{
-    mask-image:
-      radial-gradient(42% 46% at 35% 30%, black 58%, transparent 100%),
-      radial-gradient(44% 44% at 68% 36%, black 58%, transparent 100%),
-      radial-gradient(46% 44% at 42% 70%, black 58%, transparent 100%),
-      radial-gradient(40% 40% at 72% 74%, black 55%, transparent 100%),
-      radial-gradient(34% 34% at 50% 50%, black 74%, transparent 100%);
-    -webkit-mask-image:
-      radial-gradient(42% 46% at 35% 30%, black 58%, transparent 100%),
-      radial-gradient(44% 44% at 68% 36%, black 58%, transparent 100%),
-      radial-gradient(46% 44% at 42% 70%, black 58%, transparent 100%),
-      radial-gradient(40% 40% at 72% 74%, black 55%, transparent 100%),
-      radial-gradient(34% 34% at 50% 50%, black 74%, transparent 100%);
-  }
+.hero-media{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+.hero-media-blur,
+.hero-media-sharp{
+  position:absolute;
+  inset:0;
+  background:#dcdad3 url('photo.jpg') center/cover no-repeat;
+}
+
+/* размытая атмосфера — акцент на правую половину */
+.hero-media-blur{
+  background-position:62% 30%;
+  filter:blur(60px) saturate(1.08) brightness(0.95);
+  transform:scale(1.08);
+  opacity:.55;
+  -webkit-mask-image:linear-gradient(to left, #000 30%, transparent 72%);
+          mask-image:linear-gradient(to left, #000 30%, transparent 72%);
+}
+
+/* чёткий слой — лицо + плечи */
+.hero-media-sharp{
+  background-position:62% 32%;
+  filter:brightness(0.98) contrast(1.05);
+  -webkit-mask-image:
+    radial-gradient(34% 46% at 62% 32%, #000 62%, transparent 100%),
+    radial-gradient(52% 62% at 62% 55%, #000 42%, transparent 100%);
+          mask-image:
+    radial-gradient(34% 46% at 62% 32%, #000 62%, transparent 100%),
+    radial-gradient(52% 62% at 62% 55%, #000 42%, transparent 100%);
+}
+
+/* растворение краёв в цвет фона */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(115% 90% at 65% 38%,
+      transparent 34%,
+      rgba(242,241,237,0.55) 76%,
+      rgba(242,241,237,0.92) 100%);
+}
+
+  .hero-wrap{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+.hero-textblock{
+  max-width:min(58%, 780px);
+}
+.hero h1{
+  font-size:clamp(3rem, 8.4vw, 7rem);
+  line-height:0.92;
+  letter-spacing:-0.025em;
+}
+.slogan{
+  margin-top:22px;
+  font-family:'Archivo Black', sans-serif;
+  font-size:clamp(1.05rem, 1.8vw, 1.4rem);
+  color:var(--ink-soft);
+}
+
+/* Скрываем мобильное фото на ПК */
+.hero-photo-mobile{ display:none; }
+
+/* Задержки reveal */
+.reveal-delay-1{ transition-delay:.12s; }
+.reveal-delay-2{ transition-delay:.24s; }
 
   /* ---------- banner ---------- */
   .banner-section{ padding:0; }
@@ -692,6 +722,52 @@
     transform:translateY(0);
 
 }
+
+/* Скрываем ПК-слои */
+  .hero-media{ display:none; }
+
+  /* Hero превращается в обычный столбик */
+  .hero{
+    display:block;
+    min-height:auto;
+    padding:100px 20px 40px;
+    overflow:visible;
+  }
+  .hero::after{ display:none; } /* убираем градиент-растворение от ПК */
+
+  .hero-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+  }
+  .hero-textblock{ max-width:100%; text-align:left; }
+  .hero h1{ font-size:clamp(2.4rem, 12vw, 4rem); line-height:0.95; }
+  .slogan{ margin-top:14px; }
+
+  .hero-role{
+    margin-top:8px;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  /* Показываем мобильное фото-полоску */
+  .hero-photo-mobile{
+    display:block;
+    width:100%;
+    border-radius:22px;
+    overflow:hidden;
+    background:#dcdad3;
+  }
+  #heroPhoto{
+    display:block;
+    width:100%;
+    height:32vh;
+    object-fit:cover;
+    object-position:50% 25%;
+    will-change:height;
+  }
+  
 }
   
 </style>
@@ -709,16 +785,24 @@
 </header>
 
 <section class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-intro">
-      <div class="hero-textblock">
-        <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
-        <p class="slogan reveal reveal-delay-1">Делаю видео с душой</p>
-      </div>
-      <div class="photo-frame reveal reveal-delay-1">
-        <div class="photo-layer photo-blur"></div>
-        <div class="photo-layer photo-sharp"></div>
-      </div>
+
+  <!-- === ПК: фото-слои на всю секцию (скрыто на мобилке) === -->
+  <div class="hero-media" aria-hidden="true">
+    <div class="hero-media-blur"></div>
+    <div class="hero-media-sharp"></div>
+  </div>
+
+  <div class="wrap hero-wrap">
+    <!-- Текст: на ПК — слева, на мобилке — сверху -->
+    <div class="hero-textblock">
+      <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
+      <p class="slogan reveal reveal-delay-1">Делаю видео с душой</p>
+      <p class="hero-role reveal reveal-delay-2">Видеомонтажёр · SMM-специалист</p>
+    </div>
+
+    <!-- === Мобилка: фото-полоска, растущая при скролле (скрыто на ПК) === -->
+    <div class="hero-photo-mobile">
+      <img id="heroPhoto" src="photo.jpg" alt="Сергей Иванов">
     </div>
   </div>
 </section>
@@ -1086,6 +1170,49 @@ revealEls.forEach(el => revealObserver.observe(el));
       });
     });
   });
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // ...
+    });
+  });
+
+  /* ===== Рост фото в hero на мобилке ===== */
+  const heroPhoto = document.getElementById('heroPhoto');
+  const mobileMQ  = window.matchMedia('(max-width:860px)');
+
+  function updateHeroPhoto() {
+    if (!heroPhoto) return;
+    if (!mobileMQ.matches) {
+      heroPhoto.style.height = '';
+      return;
+    }
+    const rect = heroPhoto.getBoundingClientRect();
+    const vh   = window.innerHeight;
+    const startY = vh;
+    const endY   = vh * 0.3;
+    const t = (startY - rect.top) / (startY - endY);
+    const progress = Math.min(Math.max(t, 0), 1);
+    const startH = vh * 0.32;
+    const endH   = vh * 0.62;
+    heroPhoto.style.height = (startH + (endH - startH) * progress) + 'px';
+  }
+
+  let rafPending = false;
+  function onScrollHero() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      updateHeroPhoto();
+      rafPending = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScrollHero, { passive:true });
+  window.addEventListener('resize', updateHeroPhoto);
+  mobileMQ.addEventListener('change', updateHeroPhoto);
+  updateHeroPhoto();
+  
 </script>
 
 </body>
