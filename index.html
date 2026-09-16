@@ -99,17 +99,24 @@
   }
   .wrap{ max-width:1120px; margin:0 auto; }
   .reveal{
+
     opacity:0;
-    transition:opacity .8s ease;
+
+    transform:translateY(24px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,.61,.36,1);
+
 }
 
 .reveal.is-visible{
+
     opacity:1;
+
+    transform:translateY(0);
+
 }
-  .reveal.is-visible{ opacity:1; transform:translateY(0); }
-  .reveal-delay-1{ transition-delay:.12s; }
-  .reveal-delay-2{ transition-delay:.24s; }
-  .reveal-delay-3{ transition-delay:.36s; }
 
   /* ---------- hero ---------- */
   .hero{
@@ -619,7 +626,15 @@
 
 .skill-badge.big{
 
-    min-height:72px;
+    max-width:none;
+
+    min-height:96px;
+
+    height:96px;
+
+    font-size:1rem;
+
+    padding:18px;
 
 }
 
@@ -684,62 +699,62 @@
 
       <div class="skills-grid">
  
-<div class="skill-badge big tone-1 blob-a"
+<div class="skill-badge reveal big tone-1 blob-a"
 style="--x:-300px; --y:-220px; animation:floatUp 9s ease-in-out infinite;">
 Съёмка
 </div>
 
-<div class="skill-badge tone-2 blob-b"
+<div class="skill-badge reveal tone-2 blob-b"
 style="--x:0px; --y:-270px; animation:floatRotate 12s ease-in-out infinite;">
 Режиссура
 </div>
 
-<div class="skill-badge tone-3 blob-c"
+<div class="skill-badge reveal tone-3 blob-c"
 style="--x:300px; --y:-220px; animation:floatSide 10s ease-in-out infinite;">
 Написание постов
 </div>
 
-<div class="skill-badge tone-4 blob-d"
+<div class="skill-badge reveal tone-4 blob-d"
 style="--x:-350px; --y:-90px; animation:floatRotate 11s ease-in-out infinite;">
 Настройка Taplink
 </div>
 
-<div class="skill-badge tone-5 blob-e"
+<div class="skill-badge reveal tone-5 blob-e"
 style="--x:350px; --y:-90px; animation:floatUp 13s ease-in-out infinite;">
 Позиционирование
 </div>
 
-<div class="skill-badge tone-6 blob-a"
+<div class="skill-badge reveal tone-6 blob-a"
 style="--x:-360px; --y:50px; animation:floatSide 10s ease-in-out infinite;">
 Отрисовка карточек в Figma
 </div>
 
-<div class="skill-badge big tone-1 blob-b"
+<div class="skill-badge reveal big tone-1 blob-b"
 style="--x:340px; --y:60px; animation:floatRotate 14s ease-in-out infinite;">
 Видеомонтаж<br>Premiere Pro / CapCut
 </div>
 
-<div class="skill-badge big tone-2 blob-c"
+<div class="skill-badge reveal big tone-2 blob-c"
 style="--x:-360px; --y:200px; animation:floatUp 11s ease-in-out infinite;">
 Ведение сообществ<br>ВКонтакте
 </div>
 
-<div class="skill-badge tone-3 blob-d"
+<div class="skill-badge reveal tone-3 blob-d"
 style="--x:300px; --y:200px; animation:floatSide 10s ease-in-out infinite;">
 Создание групп ВК
 </div>
 
-<div class="skill-badge tone-4 blob-e"
+<div class="skill-badge reveal tone-4 blob-e"
 style="--x:0px; --y:320px; animation:floatRotate 12s ease-in-out infinite;">
 Ведение личных страниц
 </div>
 
-<div class="skill-badge tone-5 blob-a"
+<div class="skill-badge reveal tone-5 blob-a"
 style="--x:300px; --y:340px; animation:floatUp 10s ease-in-out infinite;">
 Аналитика и работа<br>с комментариями
 </div>
 
-<div class="skill-badge tone-6 blob-b"
+<div class="skill-badge reveal tone-6 blob-b"
 style="--x:-300px; --y:340px; animation:floatSide 13s ease-in-out infinite;">
 Reels / Shorts / Клипы
 </div>
@@ -986,13 +1001,8 @@ Reels / Shorts / Клипы
     header.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive:true });
 
-  
-const revealEls = [
-  ...document.querySelectorAll('.reveal'),
-  ...(window.innerWidth <= 768
-    ? document.querySelectorAll('.skills-grid .skill-badge')
-    : [])
-];
+
+const revealEls = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver((entries) => {
 
@@ -1000,24 +1010,21 @@ const revealObserver = new IntersectionObserver((entries) => {
 
     if (!entry.isIntersecting) return;
 
-    const cards = document.querySelectorAll('.skills-grid .skill-badge');
+    if (entry.target.classList.contains('skill-badge')) {
 
-    if (
-      window.innerWidth <= 768 &&
-      entry.target.classList.contains('skill-badge')
-    ) {
+      const badges = document.querySelectorAll('.skill-badge.reveal');
 
-      cards.forEach((card, index) => {
+      badges.forEach((badge, index) => {
 
         setTimeout(() => {
 
-          card.classList.add('is-visible');
+          badge.classList.add('is-visible');
 
-        }, index * 90);
+        }, index * 140);
 
       });
 
-      cards.forEach(card => revealObserver.unobserve(card));
+      badges.forEach(badge => revealObserver.unobserve(badge));
 
       return;
 
@@ -1028,7 +1035,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 
   });
 
-}, { threshold: 0.12 });
+}, { threshold: 0.15 });
 
 revealEls.forEach(el => revealObserver.observe(el));
 
