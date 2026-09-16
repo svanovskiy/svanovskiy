@@ -197,7 +197,7 @@
 
     width:min(100%,1000px);
 
-    height:700px;
+    height:850px;
 
     margin:70px auto;
 
@@ -215,9 +215,8 @@
 
     z-index:20;
 
-    width:430px;
-
-    height:430px;
+    width:380px;
+    height:380px;
 
     display:flex;
 
@@ -310,31 +309,57 @@
   .blob-d{ border-radius:38% 62% 55% 45% / 50% 45% 55% 50%; }
   .blob-e{ border-radius:62% 38% 48% 52% / 42% 55% 45% 58%; }
 
-  @keyframes floatUp{
+@keyframes floatUp{
+
     0%,100%{
-    transform:
-    translate(-50%,-50%)
-    translate(var(--x), var(--y))
-    translateY(-8px);
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x), var(--y))
+            translateY(-8px);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x), var(--y))
+            translateY(8px);
+    }
 
 }
 
 @keyframes floatSide{
+
     0%,100%{
-    transform:
-    translate(-50%,-50%)
-    translate(var(--x), var(--y))
-    translateY(-8px);
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x), var(--y))
+            translateX(-8px);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x), var(--y))
+            translateX(8px);
+    }
 
 }
 
 @keyframes floatRotate{
 
     0%,100%{
-    transform:
-    translate(-50%,-50%)
-    translate(var(--x), var(--y))
-    translateY(-8px);
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x), var(--y))
+            rotate(-2deg);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x), var(--y))
+            rotate(2deg);
+    }
 
 }
 
