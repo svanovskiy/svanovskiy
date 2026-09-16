@@ -764,23 +764,22 @@
     letter-spacing:0.02em;
   }
 
-.hero-photo-mobile{
-  display:block;
-  width:100%;
-  border-radius:22px;
-  overflow:hidden;
-  background:#dcdad3;
-}
-  
-#heroPhoto{
-  display:block;
-  width:100%;
-  height:56.25vw;        
-  object-fit:cover;
-  object-position:50% 25%;
-  will-change:height;
-  transition:none;
-}
+  .hero-photo-mobile{
+    display:block;
+    width:100%;
+    background:var(--bg);   /* беж по бокам, когда фото узкое */
+    overflow:visible;        /* ничего не обрезаем */
+    border-radius:0;         /* убираем радиус — фото само будет иметь свои пропорции */
+  }
+
+  #heroPhoto{
+    display:block;
+    width:100%;
+    height:56.25vw;          /* старт: 16:9 от ширины. JS потом меняет */
+    object-fit:contain;      /* ← ключ: без зума, без обрезки */
+    background:transparent;
+    will-change:height;
+  }
   
 }
   
@@ -1207,14 +1206,15 @@ function updateHeroPhoto() {
   const vh   = window.innerHeight;
   const w    = heroPhoto.offsetWidth;
 
-  const startY = vh;
-  const endY   = vh * 0.3;
-  const t = (startY - rect.top) / (startY - endY);
-  const progress = Math.min(Math.max(t, 0), 1);
+  // Прогресс 0..1 по положению фото в скролле
+  const startY = vh;         // фото у нижнего края экрана
+  const endY   = vh * 0.25;  // фото почти у верха
+  const raw = (startY - rect.top) / (startY - endY);
+  const progress = Math.min(Math.max(raw, 0), 1);
 
-  // Старт: 16:9 (полоска), финиш: 5:7 (как оригинал)
-  const startH = w * (9 / 16);
-  const endH   = w * (7 / 5);
+  // 16:9 → 5:7, считаем от ширины
+  const startH = w * (9 / 16);   // 0.5625 * w
+  const endH   = w * (7 / 5);    // 1.4 * w
 
   heroPhoto.style.height = (startH + (endH - startH) * progress) + 'px';
 }
@@ -1232,7 +1232,10 @@ function onScrollHero() {
 window.addEventListener('scroll', onScrollHero, { passive:true });
 window.addEventListener('resize', updateHeroPhoto);
 mobileMQ.addEventListener('change', updateHeroPhoto);
+
+// Первый запуск — сразу после загрузки страницы
 updateHeroPhoto();
+window.addEventListener('load', updateHeroPhoto);
   
 </script>
 
