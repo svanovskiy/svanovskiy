@@ -582,9 +582,6 @@
   @media (max-width: 860px){
     nav ul{ gap:16px; font-size:0.85rem; }
 
-    .hero{ padding-top:100px; min-height:auto; }
-    .hero-intro{ grid-template-columns:1fr; text-align:center; }
-    .photo-frame{ justify-self:center; margin-top:22px; width:min(80vw,380px); }
     .slogan{ margin-left:auto; margin-right:auto; }
     .section-head{ margin-left:auto; margin-right:auto; }
     .set-gallery{ grid-template-columns:1fr; }
@@ -766,19 +763,23 @@
 
   .hero-photo-mobile{
     display:block;
+    position:relative;
     width:100%;
-    background:var(--bg);   /* беж по бокам, когда фото узкое */
-    overflow:visible;        /* ничего не обрезаем */
-    border-radius:0;         /* убираем радиус — фото само будет иметь свои пропорции */
+    overflow:hidden;          /* окно, через которое видно фото — оно и растёт */
+    border-radius:24px;       /* скруглённые края, как просил */
+    background:var(--bg);
+    height:56.25vw;           /* старт: 16:9-полоска. JS меняет высоту при скролле */
+    will-change:height;
   }
 
   #heroPhoto{
     display:block;
+    position:absolute;
+    top:0; left:0;
     width:100%;
-    height:56.25vw;          /* старт: 16:9 от ширины. JS потом меняет */
-    object-fit:contain;      /* ← ключ: без зума, без обрезки */
-    background:transparent;
-    will-change:height;
+    height:auto;              /* ключевая строка: масштаб фото зависит ТОЛЬКО от ширины
+                                  и никогда не меняется — значит, зума не будет физически,
+                                  при любой высоте окна пиксельный размер картинки один и тот же */
   }
   
 }
@@ -1184,39 +1185,45 @@ revealEls.forEach(el => revealObserver.observe(el));
     });
   });
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // ...
-    });
-  });
+/* ===== Раскрытие фото в hero на мобилке ===== */
+// Растёт не картинка (её масштаб фиксирован через width:100%;height:auto
+// в CSS и никогда не меняется), а окно-обёртка .hero-photo-mobile —
+// поэтому эффект "раскрытия шторки", а не зум.
+const heroPhotoWrap = document.querySelector('.hero-photo-mobile');
+const heroPhoto     = document.getElementById('heroPhoto');
+const mobileMQ      = window.matchMedia('(max-width:768px)'); // совпадает с CSS-медиа-запросом ниже
 
-/* ===== Рост фото в hero на мобилке ===== */
-const heroPhoto = document.getElementById('heroPhoto');
-const mobileMQ  = window.matchMedia('(max-width:860px)');
+function naturalRatio() {
+  // Реальное соотношение сторон фото (высота/ширина), а не захардкоженное число.
+  // Если фото ещё не загрузилось — используем безопасный запасной вариант 4:3.
+  if (heroPhoto.naturalWidth && heroPhoto.naturalHeight) {
+    return heroPhoto.naturalHeight / heroPhoto.naturalWidth;
+  }
+  return 4 / 3;
+}
 
 function updateHeroPhoto() {
-  if (!heroPhoto) return;
+  if (!heroPhoto || !heroPhotoWrap) return;
 
   if (!mobileMQ.matches) {
-    heroPhoto.style.height = '';
+    heroPhotoWrap.style.height = '';
     return;
   }
 
-  const rect = heroPhoto.getBoundingClientRect();
+  const rect = heroPhotoWrap.getBoundingClientRect();
   const vh   = window.innerHeight;
-  const w    = heroPhoto.offsetWidth;
+  const w    = heroPhotoWrap.offsetWidth;
 
-  // Прогресс 0..1 по положению фото в скролле
-  const startY = vh;         // фото у нижнего края экрана
-  const endY   = vh * 0.25;  // фото почти у верха
+  // Прогресс 0..1 по положению блока в скролле
+  const startY = vh;         // блок у нижнего края экрана
+  const endY   = vh * 0.25;  // блок почти у верха
   const raw = (startY - rect.top) / (startY - endY);
   const progress = Math.min(Math.max(raw, 0), 1);
 
-  // 16:9 → 5:7, считаем от ширины
-  const startH = w * (9 / 16);   // 0.5625 * w
-  const endH   = w * (7 / 5);    // 1.4 * w
+  const startH = w * (9 / 16);        // старт: 16:9-полоска
+  const endH   = w * naturalRatio();  // финал: настоящие пропорции фото
 
-  heroPhoto.style.height = (startH + (endH - startH) * progress) + 'px';
+  heroPhotoWrap.style.height = (startH + (endH - startH) * progress) + 'px';
 }
 
 let rafPending = false;
@@ -1233,9 +1240,15 @@ window.addEventListener('scroll', onScrollHero, { passive:true });
 window.addEventListener('resize', updateHeroPhoto);
 mobileMQ.addEventListener('change', updateHeroPhoto);
 
-// Первый запуск — сразу после загрузки страницы
+// Первый запуск — после загрузки страницы и после загрузки самого фото
+// (важно: до загрузки фото naturalWidth/naturalHeight ещё нет)
 updateHeroPhoto();
 window.addEventListener('load', updateHeroPhoto);
+if (heroPhoto.complete) {
+  updateHeroPhoto();
+} else {
+  heroPhoto.addEventListener('load', updateHeroPhoto);
+}
   
 </script>
 
