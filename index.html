@@ -165,7 +165,7 @@
   background-color:#dcdad3;
   background-image:url('photo.jpg');
   background-repeat:no-repeat;
-  background-size:auto 132%;
+  background-size:cover;
   background-position:100% 30%;
 }
 
@@ -768,7 +768,7 @@
     overflow:hidden;          /* окно, через которое видно фото — оно и растёт */
     border-radius:24px;       /* скруглённые края, как просил */
     background:var(--bg);
-    height:56.25vw;           /* старт: 16:9-полоска. JS меняет высоту при скролле */
+    height:75vw;               /* старт: примерно 4:3
     will-change:height;
   }
 
@@ -788,13 +788,15 @@
 <body>
 
 <header id="siteHeader">
-  <nav>
-    <ul>
-      <li><a href="#work">Работы</a></li>
-      <li><a href="#about">Обо мне</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-  </nav>
+<nav>
+  <ul>
+    <li><a href="#top">Главная</a></li>
+    <li><a href="#experience">Опыт</a></li>
+    <li><a href="#work">Работы</a></li>
+    <li><a href="#about">Обо мне</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+</nav>
 </header>
 
 <section class="hero" id="top">
@@ -1218,7 +1220,7 @@ function updateHeroPhoto() {
   const progress = Math.min(Math.max(window.scrollY / REVEAL_DISTANCE, 0), 1);
   const w = heroPhotoWrap.offsetWidth;
 
-  const startH = w * (9 / 16);        // старт: 16:9-полоска
+  const startH = w * (3 / 4);         // старт: примерно 4:3
   const endH   = w * naturalRatio();  // финал: настоящие пропорции фото
 
   heroPhotoWrap.style.height = (startH + (endH - startH) * progress) + 'px';
