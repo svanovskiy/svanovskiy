@@ -347,15 +347,14 @@ a{
 
   .skills-cloud{
     position:relative;
-    width:min(100%,1000px);
-    height:auto;
-    min-height:700px;
-    padding:20px 0;
+    width:100%;                 /* было min(100%,1000px) */
+    max-width:1120px;           /* = ширина .wrap — совпадает с секциями */
+    height:960px;               /* было 850px — больше воздуха */
     margin:12px auto;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
+    overflow:visible;           /* было hidden — не режем вылезающие бейджи */
 }
   
 .skills-center{
@@ -436,8 +435,8 @@ a{
 
     scale:1;
     transition:
-        scale .35s cubic-bezier(.22,.61,.36,1),
-        box-shadow .3s ease;
+        scale .4s cubic-bezier(.22,.61,.36,1),
+        box-shadow .4s ease;
 }
   
   .skill-badge.big{
