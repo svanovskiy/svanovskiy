@@ -153,7 +153,8 @@
 
 .hero-media{
   position:absolute;
-  inset:0;
+  top:0; right:0; bottom:0;
+  left:35%;                 /* фото занимает только правые 65% ширины */
   z-index:0;
   pointer-events:none;
 }
@@ -167,30 +168,19 @@
   background-repeat:no-repeat;
   background-size:cover;
   background-position:100% 30%;
+  /* 15% от ширины ВСЕГО hero — это ~23% от ширины этого блока (он же 65% от hero) */
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 23%, #000 100%);
+          mask-image:linear-gradient(to right, transparent 0%, #000 23%, #000 100%);
 }
 
-/* размытая атмосфера — акцент на правую половину */
 .hero-media-blur{
-  background-position:100% 30%;
   filter:blur(70px) saturate(1.08) brightness(0.95);
-  transform:scale(1.1);
-  opacity:.55;
-  -webkit-mask-image:linear-gradient(to left, #000 45%, transparent 88%);
-          mask-image:linear-gradient(to left, #000 45%, transparent 88%);
+  transform:scale(1.08);
+  opacity:.5;
 }
 
-/* чёткий слой — лицо + плечи */
 .hero-media-sharp{
-  background-position:100% 32%;
   filter:brightness(0.98) contrast(1.05);
-  -webkit-mask-image:
-    radial-gradient(34% 46% at 78% 32%, #000 60%, transparent 100%),
-    radial-gradient(56% 66% at 78% 58%, #000 40%, transparent 100%),
-    linear-gradient(to right, transparent 0%, #000 28%, #000 100%);
-          mask-image:
-    radial-gradient(34% 46% at 78% 32%, #000 60%, transparent 100%),
-    radial-gradient(56% 66% at 78% 58%, #000 40%, transparent 100%),
-    linear-gradient(to right, transparent 0%, #000 28%, #000 100%);
 }
 
 .hero::after{
@@ -200,20 +190,12 @@
   z-index:1;
   pointer-events:none;
   background:
-    /* сильное растворение слева */
-    linear-gradient(to right,
-      rgba(242,241,237,1) 0%,
-      rgba(242,241,237,0.75) 14%,
-      rgba(242,241,237,0.2) 26%,
-      transparent 38%),
-    /* мягкое затемнение сверху и снизу */
     linear-gradient(to bottom,
       rgba(242,241,237,0.35) 0%,
       transparent 18%,
       transparent 78%,
       rgba(242,241,237,0.55) 100%);
 }
-
   .hero-wrap{
   position:relative;
   z-index:2;
