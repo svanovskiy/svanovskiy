@@ -717,17 +717,17 @@ linear-gradient(
 
 @media (max-width:768px){
 
-    .skills-cloud{
+    #skills{
+        padding-bottom:0;      /* ← сбрасываем ПК-шный 120px */
+    }
 
+    .skills-cloud{
         display:flex;
         flex-direction:column;
         align-items:center;
-
         height:auto;
-
         gap:26px;
-
-        padding:20px 0 40px;
+        padding:20px 0 20px;   /* было 40px снизу → 20px */
     }
 
     .skills-center{
