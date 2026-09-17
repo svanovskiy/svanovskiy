@@ -436,7 +436,7 @@ a{
     .skill-badge:active{
     scale:1.07;
 }
-  
+
   .skill-badge.big{
     max-width:320px;
     min-height:100px;
@@ -710,6 +710,14 @@ linear-gradient(
     color:#fff;
   }
   .contact-btn.instagram:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(214,41,118,0.5); }
+  .contact-btn.max{
+  background:linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+  color:#fff;
+}
+  .contact-btn.max:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 30px -16px rgba(99,102,241,0.6);
+}
 
   footer{
     padding:34px clamp(20px,6vw,64px) 44px;
@@ -828,6 +836,14 @@ linear-gradient(
 
 }
 
+.skill-badge:hover,
+  .skill-badge:active,
+  .skill-badge.reveal:hover,
+  .skill-badge.reveal:active{
+    scale:1.04 !important;
+    box-shadow:none !important;
+  }
+  
 .skill-badge.big{
     max-width:none;
     min-height:96px;
@@ -843,6 +859,29 @@ linear-gradient(
 
 }
 
+.contact-row{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:10px;
+    width:100%;
+    align-items:stretch;
+  }
+
+  .contact-btn{
+    justify-content:center;
+    padding:12px 8px;
+    font-size:0.85rem;
+    gap:6px;
+    width:100%;
+    box-sizing:border-box;
+  }
+
+  .contact-icon{
+    width:16px;
+    height:16px;
+  }
+
+  
 
   /* Исправление анимации карточек на телефоне */
 
@@ -1385,7 +1424,7 @@ Reels / Shorts / Клипы
         <span>Instagram*</span>
       </a>
 
-      <a class="contact-btn max reveal reveal-delay-2" href="https://max.ru/u/f9LHodD0cOJ4P12qMg6Stxk2e4R0LE325ZGo_606I809RDgRd-hvRS1pqXo" target="_blank" rel="noopener">
+      <a class="contact-btn max reveal reveal-delay-2" href="https://max.ru/u/f9LHodD0cOJ4P12qMg6Stxk2e4R0LE325ZGo_606I809RDgRd-hvRS1pqXo" target="_blank" rel="noopener">MAX</a>
         <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.77 1.4 5.24 3.6 6.86V22l3.9-2.1c.8.16 1.63.24 2.5.24 5.52 0 10-3.94 10-8.8S17.52 2 12 2z"/>
         </svg>
