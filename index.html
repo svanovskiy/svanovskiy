@@ -388,8 +388,15 @@ a{
     border:1px solid var(--line);
 
     border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
-  
+    scale:1;
+    transition:scale .7s cubic-bezier(.22,.61,.36,1);
 }
+
+  .skills-center:hover{
+    scale:1.15;
+    z-index:25;   /* чтобы увеличенный круг не «прятался» под бейджами */
+}
+  
   .skills-center h2{
   font-size:clamp(2.1rem, 3.95vw, 2.9rem);
   margin:0;
@@ -607,12 +614,14 @@ a{
   flex-direction:column;
   border:1px solid var(--line);
   background:var(--panel);
-  border-radius:26px;         /* ← новое: одинаковое скругление */
+  border-radius:26px;
   overflow:hidden;
   transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
 }
 
-  .card{ border-radius:26px; }
+  .card.hidden{
+  display:none;              
+}
 
   .card-cover{
     height:120px;
@@ -689,15 +698,25 @@ linear-gradient(
   
   /* ---------- contacts ---------- */
   .contact-row{ display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; }
-  .contact-btn{
-    display:inline-flex;
-    align-items:center;
-    padding:16px 30px;
-    border-radius:999px;
-    font-family:'Archivo Black', sans-serif;
-    font-size:0.95rem;
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
+.contact-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;                          /* ← отступ между иконкой и текстом */
+  padding:16px 30px;
+  border-radius:999px;
+  font-family:'Sora', sans-serif;    /* Archivo Black не подключён — используем Sora */
+  font-weight:700;
+  font-size:0.95rem;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+
+/* ↓ НОВОЕ: иконка работает везде (ПК и мобилка) */
+.contact-icon{
+  width:20px;
+  height:20px;
+  flex-shrink:0;
+  display:inline-block;
+}
   .contact-btn.telegram{ background:#26A5E4; color:#fff; }
   .contact-btn.telegram:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(38,165,228,0.6); }
   .contact-btn.instagram{
@@ -770,6 +789,12 @@ linear-gradient(
         box-sizing:border-box;
       background:#F5E6D3;
       animation:none;
+      scale:1 !important;
+      transition:none;
+    }
+
+  .skills-center:hover{
+      scale:1 !important;
     }
 
   .skills-grid{
@@ -834,7 +859,9 @@ linear-gradient(
 .skill-badge:hover,
   .skill-badge:active,
   .skill-badge.reveal:hover,
-  .skill-badge.reveal:active{
+  .skill-badge.reveal:active,
+  .skill-badge.reveal.is-visible:hover,
+  .skill-badge.reveal.is-visible:active{
     scale:1.04 !important;
     box-shadow:none !important;
   }
@@ -1128,7 +1155,7 @@ Reels / Shorts / Клипы
   <div class="wrap">
     <div class="section-head reveal">
   <h2>Опыт работы</h2>
-  <p>Государственные организации, коммерческие компании и личные проекты, в которых мне довелось работать с видеоконтентом, съёмкой и социальными сетями.</p>
+  <p>Государственные организации, коммерческие компании и личные проекты, в которых мне довелось работать с видеоконтентом, съёмкой и социальными сетями:</p>
 </div>
 
     <div class="set-gallery">
