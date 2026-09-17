@@ -94,9 +94,10 @@
 
   /* ---------- layout helpers ---------- */
   section{
-    position:relative;
-    padding:clamp(56px,8vw,110px) clamp(20px,6vw,64px);
-  }
+  position:relative;
+  padding:clamp(32px,5vw,72px) clamp(20px,6vw,64px);
+}
+  
   .wrap{ max-width:1120px; margin:0 auto; }
   .reveal{
 
@@ -147,7 +148,7 @@
   display:flex;
   align-items:center;
   /* верх: под хедер; бока: как у всех секций; низ: запас 20% */
-  padding:120px clamp(20px,6vw,64px) clamp(80px, 12vh, 180px);
+  padding:120px clamp(20px,6vw,64px) clamp(40px, 6vh, 90px);
   overflow:hidden;
   isolation:isolate;
 }
@@ -264,24 +265,19 @@
   .section-head p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.6; }
 
   /* ---------- skills cloud ---------- */
-  #skills{ padding-top:clamp(20px,4vw,50px); }
-.skills-cloud{
+  #skills{ padding-top:clamp(8px,2vw,24px); }
+
+  .skills-cloud{
     position:relative;
-
     width:min(100%,1000px);
-
     height:850px;
-
-    margin:70px auto;
-
+    margin:24px auto;
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     overflow:hidden;
 }
+  
 .skills-center{
 
     position:relative;
