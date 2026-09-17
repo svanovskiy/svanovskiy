@@ -215,8 +215,10 @@ a{
 
 .hero-media{
   position:absolute;
-  top:0; right:0; bottom:0;
-  left:35%;                 /* фото занимает только правые 65% ширины */
+  top:120px;                /* было 0 — обрезаем сверху */
+  right:0;
+  bottom:120px;             /* было 0 — обрезаем снизу */
+  left:35%;
   z-index:0;
   pointer-events:none;
 }
@@ -228,9 +230,8 @@ a{
   background-color:#dcdad3;
   background-image:url('photo.jpg');
   background-repeat:no-repeat;
-  background-size:cover;
-  background-position:100% 12%;
-  /* 15% от ширины ВСЕГО hero — это ~23% от ширины этого блока (он же 65% от hero) */
+  background-size:auto 100%;   /* высота = высоте контейнера, ширина авто */
+  background-position:100% center;
   -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 23%, #000 100%);
           mask-image:linear-gradient(to right, transparent 0%, #000 23%, #000 100%);
 }
