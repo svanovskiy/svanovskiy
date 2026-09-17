@@ -148,7 +148,7 @@
   display:flex;
   align-items:center;
   /* верх: под хедер; бока: как у всех секций; низ: запас 20% */
-  padding:120px clamp(20px,6vw,64px) clamp(40px, 6vh, 90px);
+  padding:120px clamp(20px,6vw,64px) clamp(20px, 3vh, 45px);
   overflow:hidden;
   isolation:isolate;
 }
@@ -208,11 +208,14 @@
   max-width:min(58%, 780px);
 }
   
-.hero h1{
-    font-size:clamp(2.4rem, 12vw, 4rem);
-    line-height:0.95;
-    text-align:left;
-  }
+.display-title{
+  font-family:'Archivo Black', sans-serif;
+  font-weight:400;
+  line-height:0.92;
+  letter-spacing:-0.025em;
+  margin:0;
+  font-size:clamp(3rem, 8.4vw, 7rem);
+}
   
 .slogan{
   margin-top:22px;
@@ -265,13 +268,13 @@
   .section-head p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.6; }
 
   /* ---------- skills cloud ---------- */
-  #skills{ padding-top:clamp(8px,2vw,24px); }
+ #skills{ padding-top:clamp(4px,1vw,12px);
 
   .skills-cloud{
     position:relative;
     width:min(100%,1000px);
     height:850px;
-    margin:24px auto;
+    margin:12px auto;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -306,7 +309,9 @@
     border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
 
 }
-  .skills-center h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:12px; }
+  .skills-center h2{
+  margin:0;
+}
   .skills-center p{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; }
 
   .capability-line{
@@ -812,7 +817,7 @@
 
   <div class="wrap hero-wrap">
     <div class="hero-textblock">
-      <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
+      <h1 class="display-title reveal">СЕРГЕЙ ИВАНОВ</h1>
       <p class="hero-role reveal reveal-delay-2">Оператор · Видеомонтажёр · SMM-специалист</p>
     </div>
 
@@ -828,9 +833,8 @@
   <div class="wrap">
     <div class="skills-cloud" id="skillsCloud">
       <div class="skills-center reveal">
-        <h2>Что я умею</h2>
-        <p>Полный цикл создания контента — от идеи до публикации и аналитики.</p>
-      </div>
+  <h2 class="display-title">Что я умею</h2>
+</div>
 
       <div class="skills-grid">
  
