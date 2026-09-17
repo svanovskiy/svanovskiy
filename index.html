@@ -148,7 +148,7 @@
   display:flex;
   align-items:center;
   /* верх: под хедер; бока: как у всех секций; низ: запас 20% */
-  padding:120px clamp(20px,6vw,64px) clamp(20px, 3vh, 45px);
+  padding:120px clamp(20px,6vw,64px) clamp(40px, 6vh, 90px);
   overflow:hidden;
   isolation:isolate;
 }
@@ -208,14 +208,11 @@
   max-width:min(58%, 780px);
 }
   
-.display-title{
-  font-family:'Archivo Black', sans-serif;
-  font-weight:400;
-  line-height:0.92;
-  letter-spacing:-0.025em;
-  margin:0;
-  font-size:clamp(3rem, 8.4vw, 7rem);
-}
+.hero h1{
+    font-size:clamp(2.4rem, 12vw, 4rem);
+    line-height:0.95;
+    text-align:left;
+  }
   
 .slogan{
   margin-top:22px;
@@ -268,13 +265,13 @@
   .section-head p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.6; }
 
   /* ---------- skills cloud ---------- */
- #skills{ padding-top:clamp(4px,1vw,12px);
+  #skills{ padding-top:clamp(8px,2vw,24px); }
 
   .skills-cloud{
     position:relative;
     width:min(100%,1000px);
     height:850px;
-    margin:12px auto;
+    margin:24px auto;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -309,9 +306,7 @@
     border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
 
 }
-  .skills-center h2{
-  margin:0;
-}
+  .skills-center h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:12px; }
   .skills-center p{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; }
 
   .capability-line{
@@ -817,7 +812,7 @@
 
   <div class="wrap hero-wrap">
     <div class="hero-textblock">
-      <h1 class="display-title reveal">СЕРГЕЙ ИВАНОВ</h1>
+      <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
       <p class="hero-role reveal reveal-delay-2">Оператор · Видеомонтажёр · SMM-специалист</p>
     </div>
 
@@ -833,8 +828,9 @@
   <div class="wrap">
     <div class="skills-cloud" id="skillsCloud">
       <div class="skills-center reveal">
-  <h2 class="display-title">Что я умею</h2>
-</div>
+        <h2>Что я умею</h2>
+        <p>Полный цикл создания контента — от идеи до публикации и аналитики.</p>
+      </div>
 
       <div class="skills-grid">
  
@@ -850,22 +846,22 @@ style="--x:0px; --y:-270px; animation:floatRotate 12s ease-in-out infinite;">
 
 <div class="skill-badge reveal tone-3 blob-c"
 style="--x:300px; --y:-220px; animation:floatSide 10s ease-in-out infinite;">
-Написание<br>постов
+Написание постов
 </div>
 
 <div class="skill-badge reveal tone-4 blob-d"
 style="--x:-350px; --y:-90px; animation:floatRotate 11s ease-in-out infinite;">
-Настройка<br>Taplink
+Настройка Taplink
 </div>
 
 <div class="skill-badge reveal tone-5 blob-e"
 style="--x:350px; --y:-90px; animation:floatUp 13s ease-in-out infinite;">
-Продвижение<br>необходимой<br>повестки
+Продвижение необходимой повестки
 </div>
 
 <div class="skill-badge reveal tone-6 blob-a"
 style="--x:-360px; --y:50px; animation:floatSide 10s ease-in-out infinite;">
-Отрисовка<br>карточек в Figma
+Отрисовка карточек<br>в Figma
 </div>
 
 <div class="skill-badge reveal big tone-1 blob-b"
@@ -875,12 +871,12 @@ style="--x:340px; --y:60px; animation:floatRotate 14s ease-in-out infinite;">
 
 <div class="skill-badge reveal big tone-2 blob-c"
 style="--x:-360px; --y:200px; animation:floatUp 11s ease-in-out infinite;">
-Ведение<br>сообществ<br>во ВКонтакте
+Ведение сообществ<br>ВКонтакте
 </div>
 
 <div class="skill-badge reveal tone-3 blob-d"
 style="--x:300px; --y:200px; animation:floatSide 10s ease-in-out infinite;">
-Создание групп<br> во ВКонтакте
+Создание групп ВК
 </div>
 
 <div class="skill-badge reveal tone-4 blob-e"
