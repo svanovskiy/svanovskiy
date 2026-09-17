@@ -603,6 +603,7 @@ a{
   .card[data-cat="reels"]{ border-radius:26px 26px 6px 26px; }
   .card[data-cat="events"]{ border-radius:4px; }
   .card[data-cat="communities"]{ border-radius:14px; }
+  .card[data-cat="sites"]{ border-radius:4px; }
 
   .card-cover{
     height:120px;
@@ -635,7 +636,48 @@ linear-gradient(
   .about-text{ max-width:70ch; }
   .about-text p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.75; margin-bottom:20px; }
   .about-text p:last-child{ margin-bottom:0; }
+  #about .section-head{ margin-bottom:16px; }
 
+/* ---------- gear (аппаратура) ---------- */
+.gear-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));
+  gap:16px;
+}
+
+.gear-card{
+  aspect-ratio:1 / 1;
+  border-radius:28px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:center;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+
+.gear-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 32px -18px rgba(70,58,42,.22);
+}
+
+.gear-emoji{
+  font-size:2rem;
+  line-height:1;
+}
+
+.gear-name{
+  font-family:'Manrope', sans-serif;
+  font-size:0.92rem;
+  font-weight:500;
+  line-height:1.35;
+  color:#4f4b44;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+  
   /* ---------- contacts ---------- */
   .contact-row{ display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; }
   .contact-btn{
@@ -800,6 +842,20 @@ linear-gradient(
 
 }
 
+ .gear-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
+  }
+
+  .gear-card{
+    border-radius:22px;
+    padding:14px;
+    gap:8px;
+  }
+
+  .gear-emoji{ font-size:1.6rem; }
+  .gear-name{ font-size:0.85rem; }
+  
 /* Скрываем ПК-слои */
   .hero-media{ display:none; }
 
@@ -926,6 +982,19 @@ linear-gradient(
 </div>
 </section>
 
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Обо мне</h2>
+    </div>
+    <div class="about-text">
+      <p class="reveal">Меня зовут Сергей. Снимаю и монтирую видео для соцсетей: рилсы для Instagram* и TikTok, ролики для YouTube. Работаю с блогерами, врачами и бьюти-мастерами, которые хотят получать контент, а не просто отснятый материал.</p>
+      <p class="reveal reveal-delay-1">Отдельное направление — сотрудничество с администрациями районов Санкт-Петербурга: снимаю и монтирую сюжеты о городских событиях, праздниках и людях, о которых стоит рассказать.</p>
+      <p class="reveal reveal-delay-2">Также веду сообщества ВКонтакте для клиник и бьюти-пространств — от оформления страницы до регулярных публикаций, которые держат группу живой.</p>
+    </div>
+  </div>
+</section>
+  
 <section id="skills">
   <div class="wrap">
     <div class="skills-cloud" id="skillsCloud">
@@ -1006,8 +1075,9 @@ Reels / Shorts / Клипы
 <section id="experience">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>Опыт работы</h2>
-    </div>
+  <h2>Опыт работы</h2>
+  <p>От съёмок для городских праздников до постоянного ведения соцсетей брендов — путь шаг за шагом.</p>
+</div>
 
     <div class="set-gallery">
       <img class="reveal" src="gallery-1.jpg" alt="Съёмка интервью на площадке">
@@ -1016,12 +1086,13 @@ Reels / Shorts / Клипы
 
     <div class="timeline">
       <div class="timeline-item current reveal">
-        <div class="timeline-text">
-          <span class="timeline-tag">Сейчас</span>
-          <h3>Оператор-видеомонтажёр</h3>
-          <p class="timeline-company">АНО «Медиадом»</p>
-        </div>
-      </div>
+  <div class="timeline-text">
+    <span class="timeline-tag">Сейчас</span>
+    <h3>Оператор-видеомонтажёр</h3>
+    <p class="timeline-company">АНО «Медиадом»</p>
+  </div>
+  <div class="timeline-photo" style="background-image:url('mediadom.jpg');"></div>
+</div>
       <div class="timeline-item reveal">
         <div class="timeline-text">
           <h3>SMM-специалист / Оператор</h3>
@@ -1042,11 +1113,12 @@ Reels / Shorts / Клипы
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-text">
-          <h3>Обзоры ресторанов</h3>
-          <p class="timeline-company">Telegram-канал «По поребрику в Парадную»</p>
-        </div>
-      </div>
+  <div class="timeline-text">
+    <h3>Обзоры ресторанов</h3>
+    <p class="timeline-company">Telegram-канал «По поребрику в Парадную»</p>
+  </div>
+  <div class="timeline-photo" style="background-image:url('restaurants.jpg');"></div>
+</div>
       <div class="timeline-item reveal">
         <div class="timeline-text">
           <h3>Экспертные рилсы для блогеров</h3>
@@ -1083,6 +1155,7 @@ Reels / Shorts / Клипы
       <button class="filter-btn" data-filter="reels">Рилсы для соцсетей</button>
       <button class="filter-btn" data-filter="events">Городские события</button>
       <button class="filter-btn" data-filter="communities">Сообщества ВКонтакте</button>
+      <button class="filter-btn" data-filter="sites">Сайты</button>
     </div>
 
     <div class="card-grid" id="cardGrid">
@@ -1195,23 +1268,62 @@ Reels / Shorts / Клипы
         </div>
       </a>
 
+      <a class="card reveal" data-cat="sites" href="https://svanovskiy.github.io" target="_blank" rel="noopener">
+        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></div>
+         <div class="card-body">
+            <span class="card-tag">Сайт · ПК и мобильная версия</span>
+            <h3>Личный сайт-портфолио</h3>
+            <p>Этот сайт — тоже моя работа: от структуры и дизайна до вёрстки под десктоп и телефон.</p>
+         </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<section id="about">
+<section id="gear">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>Обо мне</h2>
+      <h2>Аппаратура</h2>
+      <p>То, с чем я работаю на съёмках и в монтаже.</p>
     </div>
-    <div class="about-text">
-      <p class="reveal">Меня зовут Сергей. Снимаю и монтирую видео для соцсетей: рилсы для Instagram* и TikTok, ролики для YouTube. Работаю с блогерами, врачами и бьюти-мастерами, которые хотят получать контент, а не просто отснятый материал.</p>
-      <p class="reveal reveal-delay-1">Отдельное направление — сотрудничество с администрациями районов Санкт-Петербурга: снимаю и монтирую сюжеты о городских событиях, праздниках и людях, о которых стоит рассказать.</p>
-      <p class="reveal reveal-delay-2">Также веду сообщества ВКонтакте для клиник и бьюти-пространств — от оформления страницы до регулярных публикаций, которые держат группу живой.</p>
+    <div class="gear-grid">
+      <div class="gear-card tone-6 reveal">
+        <span class="gear-emoji">📷</span>
+        <span class="gear-name">Sony Alpha 6100</span>
+      </div>
+      <div class="gear-card tone-3 reveal reveal-delay-1">
+        <span class="gear-emoji">🎥</span>
+        <span class="gear-name">Canon EOS 600D + EF-S 18-55mm</span>
+      </div>
+      <div class="gear-card tone-5 reveal reveal-delay-2">
+        <span class="gear-emoji">📱</span>
+        <span class="gear-name">iPhone 15 Pro Max</span>
+      </div>
+      <div class="gear-card tone-1 reveal">
+        <span class="gear-emoji">💻</span>
+        <span class="gear-name">MacBook Air М4</span>
+      </div>
+      <div class="gear-card tone-4 reveal reveal-delay-1">
+        <span class="gear-emoji">🎬</span>
+        <span class="gear-name">Стабилизатор Scorp</span>
+      </div>
+      <div class="gear-card tone-2 reveal reveal-delay-2">
+        <span class="gear-emoji">💡</span>
+        <span class="gear-name">Свет</span>
+      </div>
+      <div class="gear-card tone-6 reveal">
+        <span class="gear-emoji">📐</span>
+        <span class="gear-name">Штатив</span>
+      </div>
+      <div class="gear-card tone-5 reveal reveal-delay-1">
+        <span class="gear-emoji">🎤</span>
+        <span class="gear-name">Микрофоны</span>
+      </div>
     </div>
   </div>
 </section>
-
+  
 <section id="contact">
   <div class="wrap">
     <div class="section-head reveal">
