@@ -211,7 +211,7 @@ a{
   display:flex;
   align-items:center;
   /* верх: под хедер; бока: как у всех секций; низ: запас 20% */
-  padding:120px clamp(20px,6vw,64px) clamp(20px, 3vh, 45px);
+  padding:120px clamp(20px,6vw,64px) 20px;
   overflow:hidden;
   isolation:isolate;
 }
@@ -232,7 +232,7 @@ a{
   background-image:url('photo.jpg');
   background-repeat:no-repeat;
   background-size:cover;
-  background-position:100% 30%;
+  background-position:100% 12%;
   /* 15% от ширины ВСЕГО hero — это ~23% от ширины этого блока (он же 65% от hero) */
   -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 23%, #000 100%);
           mask-image:linear-gradient(to right, transparent 0%, #000 23%, #000 100%);
@@ -275,13 +275,13 @@ a{
 
     font-family:'Sora', sans-serif;
 
-    font-size:clamp(4.8rem, 9vw, 8rem);
+    font-size:clamp(3rem, 8.4vw, 7rem);
 
     font-weight:800;
 
-    line-height:.9;
-
-    letter-spacing:-0.05em;
+    line-height:0.92;
+    letter-spacing:-0.025em;
+    margin-left:-4px;
 
 }
   
@@ -343,7 +343,7 @@ a{
   .section-head p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.6; }
 
   /* ---------- skills cloud ---------- */
-  #skills{ padding-top:clamp(4px,1vw,12px); }
+  #skills{ padding-top:0; }
 
   .skills-cloud{
     position:relative;
@@ -850,7 +850,7 @@ linear-gradient(
     line-height:1.5;
     color:var(--ink-soft);
     letter-spacing:0.02em;
-    text-align:center;      /* ← добавить / поменять на center */
+    text-align:left;
   }
 
   .hero-photo-mobile{
@@ -922,9 +922,8 @@ linear-gradient(
     <div class="hero-textblock">
       <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
       <p class="hero-role reveal reveal-delay-2">Оператор · Видеомонтажёр · SMM-специалист</p>
+      <p class="hero-caption reveal reveal-delay-2">Полный цикл создания контента — начиная от идеи, заканчивая публикацией и аналитикой</p>
     </div>
-
-    <p class="hero-caption reveal reveal-delay-2">Полный цикл создания контента — начиная от идеи, заканчивая публикацией и аналитикой</p>
 
     <div class="hero-photo-mobile">
       <img id="heroPhoto" src="photo.jpg" alt="Сергей Иванов">
