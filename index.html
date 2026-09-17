@@ -190,7 +190,7 @@ a{
     transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.22,.61,.36,1),
-        scale .4s cubic-bezier(.22,.61,.36,1);
+        scale .7s cubic-bezier(.22,.61,.36,1);
 }
 
 .skill-badge.reveal.is-visible{
@@ -344,14 +344,14 @@ a{
 
   .skills-cloud{
     position:relative;
-    width:100%;                 /* было min(100%,1000px) */
-    max-width:1120px;           /* = ширина .wrap — совпадает с секциями */
-    height:960px;               /* было 850px — больше воздуха */
-    margin:12px auto;
+    width:100%;
+    max-width:1120px;
+    height:680px;               /* было 960px */
+    margin:6px auto;            /* было 12px */
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:visible;           /* было hidden — не режем вылезающие бейджи */
+    overflow:visible;
 }
   
 .skills-center{
@@ -420,8 +420,8 @@ a{
 
     scale:1;
     transition:
-        scale .4s cubic-bezier(.22,.61,.36,1),
-        box-shadow .4s ease;
+        scale .7s cubic-bezier(.22,.61,.36,1),
+        box-shadow .7s ease;
 }
   
   .skill-badge.big{
@@ -433,7 +433,7 @@ a{
 }
 
 .skill-badge:hover{
-    scale:1.15;
+    scale:1.2;
     box-shadow:0 18px 32px -18px rgba(70,58,42,.22);
     z-index:5;
 }
