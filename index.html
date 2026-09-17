@@ -300,18 +300,13 @@ a{
 }
 
 .hero-caption{
-  position:absolute;
-  /* Позиционируем в правой колонке, под фото */
-  left:38%;                        /* чуть правее начала фото */
-  right:clamp(20px, 6vw, 64px);    /* совпадает с padding .hero */
-  bottom:clamp(30px, 5vw, 60px);   /* отступ от низа секции */
-  max-width:560px;
+  margin-top:28px;
+  max-width:min(58%, 780px);   
   font-family:'Manrope', sans-serif;
   font-size:0.95rem;
   line-height:1.5;
   color:var(--ink-soft);
   letter-spacing:0.01em;
-  z-index:3;
 }
 
 /* Скрываем мобильное фото на ПК */
