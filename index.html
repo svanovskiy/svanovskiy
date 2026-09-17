@@ -39,12 +39,40 @@
   }
 
   body{
+
     margin:0;
+
     font-family:'Manrope', sans-serif;
+
     color:var(--ink);
-    background:var(--bg);
+
+    background:
+
+        radial-gradient(circle at 12% 15%,
+            rgba(196,219,255,.35),
+            transparent 35%),
+
+        radial-gradient(circle at 88% 22%,
+            rgba(233,220,255,.28),
+            transparent 30%),
+
+        radial-gradient(circle at 50% 100%,
+            rgba(225,244,235,.28),
+            transparent 38%),
+
+        linear-gradient(
+            180deg,
+            #FCFCFE 0%,
+            #F7F8FC 45%,
+            #FBFCFD 100%
+        );
+
+    background-attachment:fixed;
+
     -webkit-font-smoothing:antialiased;
+
     overflow-x:hidden;
+
 }
 
 h1,h2{
