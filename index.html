@@ -18,17 +18,12 @@
     --accent-soft:rgba(111,138,99,0.12);
     --line:rgba(44,42,38,0.14);
 
---tone-1:#EAF7EF;   /* мягкий зеленый */
-
---tone-2:#EFEAFF;   /* лавандовый */
-
---tone-3:#EAF4FF;   /* голубой */
-
---tone-4:#FFF4D8;   /* теплый желтый */
-
---tone-5:#FFE9E8;   /* очень мягкий красный */
-
---tone-6:#E6F8F4;   /* мята */
+--tone-1:#DCE7D7;
+--tone-2:#E7DED2;
+--tone-3:#EFE5D7;
+--tone-4:#F2E6BF;
+--tone-5:#E7D4C8;
+--tone-6:#D7E1D7;
   }
 
   *{box-sizing:border-box;}
@@ -430,14 +425,18 @@ font-weight:500;
     padding:30px 38px;
     z-index:4;
 
-}.skill-badge:hover{
+}
+
+.skill-badge:hover{
 
     transform:translateY(-4px);
 
-    box-shadow:0 18px 36px -18px rgba(44,42,38,.18);
+    box-shadow:0 18px 32px -18px rgba(70,58,42,.22);
 
     filter:none;
 
+}
+  
 }
 
   .tone-1{ background:var(--tone-1); }
@@ -598,7 +597,16 @@ font-weight:500;
   .card-cover{
     height:120px;
     display:flex; align-items:center; justify-content:center;
-    background:var(--bg);
+    background:
+radial-gradient(circle at 12% 18%, rgba(225,214,192,.28) 0%, transparent 34%),
+radial-gradient(circle at 88% 12%, rgba(236,226,210,.22) 0%, transparent 32%),
+radial-gradient(circle at 50% 100%, rgba(214,223,205,.16) 0%, transparent 40%),
+linear-gradient(
+180deg,
+#F8F5EF 0%,
+#F5F1EA 45%,
+#F9F6F2 100%
+);
     border-bottom:1px solid var(--line);
   }
   .card-cover svg{ width:30px; height:30px; color:var(--accent); }
@@ -858,7 +866,26 @@ font-weight:500;
   width:100%;
   height:auto;
 }
-  
+  body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.045;
+
+    background-image:
+        radial-gradient(circle, rgba(0,0,0,.08) .6px, transparent .8px);
+
+    background-size:9px 9px;
+
+    mix-blend-mode:multiply;
+
+}
 }
   
 </style>
