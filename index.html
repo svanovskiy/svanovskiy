@@ -7,7 +7,7 @@
 <meta name="description" content="Сергей Иванов — съёмка и монтаж видео для соцсетей, ведение сообществ ВКонтакте, работа с госструктурами, бизнесом и блогерами в Санкт-Петербурге и удалённо.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f2f1ed;
@@ -18,12 +18,17 @@
     --accent-soft:rgba(111,138,99,0.12);
     --line:rgba(44,42,38,0.14);
 
-    --tone-1:#c3d9b8;
-    --tone-2:#e3c3b3;
-    --tone-3:#cdc0dc;
-    --tone-4:#e6cd97;
-    --tone-5:#aecdd9;
-    --tone-6:#d9b6a3;
+--tone-1:#EAF7EF;   /* мягкий зеленый */
+
+--tone-2:#EFEAFF;   /* лавандовый */
+
+--tone-3:#EAF4FF;   /* голубой */
+
+--tone-4:#FFF4D8;   /* теплый желтый */
+
+--tone-5:#FFE9E8;   /* очень мягкий красный */
+
+--tone-6:#E6F8F4;   /* мята */
   }
 
   *{box-sizing:border-box;}
@@ -40,17 +45,45 @@
     background:var(--bg);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
-  }
+}
 
-  h1,h2{
-    font-family:'Archivo Black', sans-serif;
-    font-weight:400;
-    line-height:1.1;
+h1,h2{
+
+    font-family:'Sora', sans-serif;
+
+    font-weight:700;
+
+    line-height:1.05;
+
+    letter-spacing:-0.03em;
+
     margin:0;
-  }
-  h3{ font-family:'Manrope', sans-serif; font-weight:700; margin:0; }
-  p{ margin:0; }
-  a{ color:inherit; text-decoration:none; }
+
+}
+
+h3{
+
+    font-family:'Manrope', sans-serif;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+p{
+
+    margin:0;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
 
   /* ---------- nav ---------- */
   header{
@@ -209,9 +242,9 @@
 }
   
 .hero h1{
-    font-size:clamp(2.4rem, 12vw, 4rem);
-    line-height:0.95;
-    text-align:left;
+    ffont-family:'Sora', sans-serif;
+font-weight:800;
+letter-spacing:-0.03em;
   }
   
 .slogan{
@@ -307,8 +340,8 @@
 
 }
   .skills-center h2{
-  font-family:'Archivo Black', sans-serif;
-  font-weight:400;
+  font-family:'Sora', sans-serif;
+font-weight:500;
   font-size:clamp(2rem, 4.5vw, 3.4rem);
   line-height:1.05;
   letter-spacing:-0.02em;
@@ -350,7 +383,7 @@
     text-align:center;
 
     font-family:'Manrope', sans-serif;
-    font-weight:700;
+    font-weight:600;
     font-size:.95rem;
     line-height:1.35;
 
@@ -369,8 +402,15 @@
     padding:30px 38px;
     z-index:4;
 
+}.skill-badge:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 36px -18px rgba(44,42,38,.18);
+
+    filter:none;
+
 }
-  .skill-badge:hover{ filter:brightness(0.93) saturate(1.15); box-shadow:0 14px 26px -16px rgba(44,42,38,0.35); }
 
   .tone-1{ background:var(--tone-1); }
   .tone-2{ background:var(--tone-2); }
