@@ -290,8 +290,6 @@
 
     border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
 
-    box-shadow:0 30px 70px rgba(0,0,0,.06);
-
 }
   .skills-center h2{ font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:12px; }
   .skills-center p{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; }
@@ -609,23 +607,16 @@
 
     }
 
-.skills-grid{
-
+  .skills-grid{
     width:100%;
-
     max-width:100%;
-
     display:grid;
-
-    grid-template-columns:1fr 1fr;
-
+    /* minmax(0,1fr) — фикс равной ширины колонок */
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     gap:14px;
-
-    padding:0 24px;
-
+    /* УБРАНО: padding:0 24px — пусть выравнивается по .wrap */
     box-sizing:border-box;
-
-}
+  }
 
 .skill-badge{
 
@@ -661,10 +652,10 @@
     line-height:1.25;
 
     word-break:normal;
-
-    overflow-wrap:normal;
-
+    overflow-wrap:break-word;
+    hyphens:auto;
     white-space:normal;
+    min-width:0;
 
     animation:none !important;
 
@@ -722,9 +713,11 @@
   .hero{
     display:block;
     min-height:auto;
-    padding:100px 20px 40px;
+    /* по вертикали — свои значения; по горизонтали — как у всех секций */
+    padding:100px clamp(20px, 6vw, 64px) 40px;
     overflow:visible;
   }
+  
   .hero::after{ display:none; } /* убираем градиент-растворение от ПК */
 
   .hero-wrap{
