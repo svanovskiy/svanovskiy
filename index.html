@@ -185,15 +185,12 @@ a{
   /* Облачка появляются отдельно */
 
 .skill-badge.reveal{
-
     opacity:0;
-
     transform:translate(-50%,-50%) scale(.9);
-
     transition:
         opacity .8s ease,
-        transform .8s cubic-bezier(.22,.61,.36,1);
-
+        transform .8s cubic-bezier(.22,.61,.36,1),
+        scale .4s cubic-bezier(.22,.61,.36,1);
 }
 
 .skill-badge.reveal.is-visible{
