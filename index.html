@@ -18,12 +18,12 @@
     --accent-soft:rgba(111,138,99,0.12);
     --line:rgba(44,42,38,0.14);
 
---tone-1:#DCE7D7;
---tone-2:#E7DED2;
---tone-3:#EFE5D7;
---tone-4:#F2E6BF;
---tone-5:#E7D4C8;
---tone-6:#D7E1D7;
+--tone-1:#C9D9C4;   /* шалфей */
+--tone-2:#D8D0C5;   /* лен */
+--tone-3:#DCCFBF;   /* песок */
+--tone-4:#E8D79F;   /* овес */
+--tone-5:#D9C1B4;   /* терракота */
+--tone-6:#BFD3C8;   /* эвкалипт */
   }
 
   *{box-sizing:border-box;}
@@ -272,16 +272,31 @@ a{
 }
   
 .hero h1{
-    ffont-family:'Sora', sans-serif;
-font-weight:800;
-letter-spacing:-0.03em;
-  }
+
+    font-family:'Sora', sans-serif;
+
+    font-size:clamp(6rem, 12vw, 10rem);
+
+    font-weight:800;
+
+    line-height:.9;
+
+    letter-spacing:-0.05em;
+
+}
   
 .slogan{
-  margin-top:22px;
-  font-family:'Archivo Black', sans-serif;
-  font-size:clamp(1.05rem, 1.8vw, 1.4rem);
-  color:var(--ink-soft);
+
+    margin-top:22px;
+
+    font-family:'Manrope', sans-serif;
+
+    font-weight:600;
+
+    font-size:clamp(1.05rem, 1.8vw, 1.35rem);
+
+    color:var(--ink-soft);
+
 }
 
 .hero-caption{
