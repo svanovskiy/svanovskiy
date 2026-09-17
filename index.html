@@ -216,6 +216,16 @@
   color:var(--ink-soft);
 }
 
+ .hero-caption{
+  margin:24px 0 0;
+  max-width:70ch;
+  font-family:'Manrope', sans-serif;
+  font-size:0.95rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+  letter-spacing:0.01em;
+}
+
 /* Скрываем мобильное фото на ПК */
 .hero-photo-mobile{ display:none; }
 
@@ -590,21 +600,17 @@
     }
 
     .skills-center{
-
         position:relative;
-
         transform:none;
-
         width:100%;
-        max-width:340px;
-
+        /* было 340px — теперь контейнер шире, а margin делает боковые поля */
+        max-width:100%;
+        margin:0 clamp(20px, 6vw, 64px);   /* ← те же поля, что у секций */
         min-height:170px;
         height:auto;
-
         padding:30px 24px;
-
         border-radius:34px;
-
+        box-sizing:border-box;
     }
 
   .skills-grid{
@@ -614,7 +620,6 @@
     /* minmax(0,1fr) — фикс равной ширины колонок */
     grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     gap:14px;
-    /* УБРАНО: padding:0 24px — пусть выравнивается по .wrap */
     box-sizing:border-box;
   }
 
@@ -736,6 +741,12 @@
     letter-spacing:0.02em;
   }
 
+   .hero-caption{
+    margin-top:20px;
+    font-size:0.95rem;
+    line-height:1.55;
+  }
+
   .hero-photo-mobile{
     display:block;
     position:relative;
@@ -786,14 +797,15 @@
     <!-- Текст: на ПК — слева, на мобилке — сверху -->
     <div class="hero-textblock">
       <h1 class="reveal">СЕРГЕЙ ИВАНОВ</h1>
-      <p class="slogan reveal reveal-delay-1">Делаю видео с душой</p>
-      <p class="hero-role reveal reveal-delay-2">Видеомонтажёр · SMM-специалист</p>
+      <p class="hero-role reveal reveal-delay-2">Оператор · Видеомонтажёр · SMM-специалист</p>
     </div>
 
     <!-- === Мобилка: фото-полоска, растущая при скролле (скрыто на ПК) === -->
     <div class="hero-photo-mobile">
       <img id="heroPhoto" src="photo.jpg" alt="Сергей Иванов">
     </div>
+
+    <p class="hero-caption reveal reveal-delay-2">Полный цикл создания контента — начиная от идеи, заканчивая публикацией и аналитикой</p>
   </div>
 </section>
 
@@ -868,7 +880,6 @@ Reels / Shorts / Клипы
 </div>
     </div>
        </div>
-    <p class="capability-line reveal">Снимаю, монтирую, веду соцсети. Работаю с госструктурами, бизнесом, блогерами в Санкт-Петербурге и удалённо.</p>
   </div>
 </section>
 
