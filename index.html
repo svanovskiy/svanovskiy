@@ -146,7 +146,8 @@
   min-height:100svh;
   display:flex;
   align-items:center;
-  padding:120px clamp(20px,6vw,64px) 70px;
+  /* верх: под хедер; бока: как у всех секций; низ: запас 20% */
+  padding:120px clamp(20px,6vw,64px) clamp(80px, 12vh, 180px);
   overflow:hidden;
   isolation:isolate;
 }
@@ -756,16 +757,15 @@
   }
 
    .hero-caption{
-    position:static;            /* отключаем absolute с ПК */
-    left:auto; right:auto; bottom:auto;   /* сбрасываем */
-    margin:20px 0 0;
+    position:static;
+    margin:16px 0 0;
     max-width:100%;
     font-family:'Manrope', sans-serif;
-    font-size:0.9rem;           /* как у .hero-role */
+    font-size:0.9rem;
     line-height:1.5;
     color:var(--ink-soft);
-    letter-spacing:0.02em;      /* как у .hero-role */
-    text-align:left;            /* ← по левому краю */
+    letter-spacing:0.02em;
+    text-align:center;      /* ← добавить / поменять на center */
   }
 
   .hero-photo-mobile{
