@@ -497,7 +497,7 @@ a{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
-    margin-bottom:clamp(48px,7vw,72px);
+    margin-bottom:clamp(48px,7vw,72px)
   }
   .set-gallery img{
     width:100%;
@@ -618,7 +618,9 @@ linear-gradient(
   .about-text p{ color:var(--ink-soft); font-size:1.02rem; line-height:1.75; margin-bottom:20px; }
   .about-text p:last-child{ margin-bottom:0; }
   #about .section-head{ margin-bottom:16px; }
-
+  #experience .section-head{
+  margin-bottom:16px;
+}
 /* ---------- gear (аппаратура) ---------- */
 .gear-grid{
   display:grid;
@@ -664,11 +666,11 @@ linear-gradient(
 .contact-btn{
   display:inline-flex;
   align-items:center;
-  gap:10px;                          /* ← отступ между иконкой и текстом */
+  gap:10px;
   padding:16px 30px;
   border-radius:999px;
-  font-family:'Sora', sans-serif;    /* Archivo Black не подключён — используем Sora */
-  font-weight:700;
+  font-family:'Manrope', sans-serif;
+  font-weight:600;
   font-size:0.95rem;
   transition:transform .3s ease, box-shadow .3s ease;
 }
@@ -710,10 +712,8 @@ linear-gradient(
 
   @media (max-width: 860px){
     nav ul{ gap:16px; font-size:0.85rem; }
-
     .slogan{ margin-left:auto; margin-right:auto; }
     .section-head{ margin-left:auto; margin-right:auto; }
-    .set-gallery{ grid-template-columns:1fr; }
   }
   @media (max-width: 520px){
     header{ padding:16px 18px; }
@@ -771,52 +771,35 @@ linear-gradient(
   }
 
 .skill-badge{
-
+    translate: none;              
     position:relative;
-
     left:auto;
     top:auto;
-
     width:100%;
-
     height:96px;
-
     padding:18px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     box-sizing:border-box;
-
     border-radius:26px;
-
     font-family:'Manrope', sans-serif;
     font-size:1.02rem;
     font-weight:400;
     line-height:1.5;
     color:#4f4b44;
-
     word-break:normal;
     overflow-wrap:break-word;
     hyphens:auto;
     white-space:normal;
     min-width:0;
-
     animation:none !important;
-
     opacity:0;
-
     transform:translateY(24px);
-
     transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.22,.61,.36,1);
-
 }
 
 .skill-badge:hover,
@@ -866,7 +849,9 @@ linear-gradient(
     height:16px;
   }
 
-  
+  .set-gallery{
+    grid-template-columns:1fr;
+  }
 
   /* Исправление анимации карточек на телефоне */
 
