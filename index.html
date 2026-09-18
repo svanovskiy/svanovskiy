@@ -416,9 +416,8 @@ a{
 .skill-badge{
     position:absolute;
     left:50%;
-    top:50%;
-    transform: translate(-50%,-50%) translate(var(--x), var(--y));
-  transform-origin: center center;
+    top:50;
+    translate: calc(-50% + var(--x)) calc(-50% + var(--y));   /* ← вместо transform */
     z-index:2;
     max-width:260px;
     min-height:76px;
@@ -468,24 +467,6 @@ a{
   .blob-d{ border-radius:38% 62% 55% 45% / 50% 45% 55% 50%; }
   .blob-e{ border-radius:62% 38% 48% 52% / 42% 55% 45% 58%; }
 
-@keyframes floatUp{
-
-    0%,100%{
-        transform:
-            translate(-50%,-50%)
-            translate(var(--x), var(--y))
-            translateY(-8px);
-    }
-
-    50%{
-        transform:
-            translate(-50%,-50%)
-            translate(var(--x), var(--y))
-            translateY(8px);
-    }
-
-}
-
 @keyframes skillsGradient{
     0%   { background-position: 0% 50%; }
     25%  { background-position: 100% 25%; }
@@ -493,40 +474,21 @@ a{
     75%  { background-position: 0% 75%; }
     100% { background-position: 0% 50%; }
 }
+
+@keyframes floatUp{
+    0%,100%{ transform: translateY(-8px); }
+    50%    { transform: translateY(8px); }
+}
   
 @keyframes floatSide{
-
-    0%,100%{
-        transform:
-            translate(-50%,-50%)
-            translate(var(--x), var(--y))
-            translateX(-8px);
-    }
-
-    50%{
-        transform:
-            translate(-50%,-50%)
-            translate(var(--x), var(--y))
-            translateX(8px);
-    }
-
+    0%,100%{ transform: translateX(-8px); }
+    50%    { transform: translateX(8px); }
 }
 
 @keyframes floatRotate{
-
-    0%,100%{
-        transform:
-            translate(-50%,-50%)
-            translate(var(--x), var(--y))
-            rotate(-2deg);
-    }
-
-    50%{
-        transform:
-            translate(-50%,-50%)
-            translate(var(--x), var(--y))
-            rotate(2deg);
-    }
+    0%,100%{ transform: rotate(-2deg); }
+    50%    { transform: rotate(2deg); }
+}
 
 }
 
