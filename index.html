@@ -362,7 +362,7 @@ a{
     width:360px;
     height:360px;
 
-    transform: translateY(50px);
+    translate: 0 50px;  
   
     display:flex;
 
@@ -390,7 +390,10 @@ a{
 
     border-radius:50% 50% 46% 54% / 54% 46% 54% 46%;
     scale:1;
-    transition:scale .7s cubic-bezier(.22,.61,.36,1);
+    transition:
+        scale .7s cubic-bezier(.22,.61,.36,1),
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,.61,.36,1);
 }
 
   .skills-center:hover{
@@ -740,6 +743,7 @@ a{
     .skills-center{
         position:relative;
         transform:none;
+        translate:none;
         width:100%;
         /* было 340px — теперь контейнер шире, а margin делает боковые поля */
         max-width:100%;
