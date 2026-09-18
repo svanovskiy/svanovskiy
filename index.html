@@ -587,21 +587,19 @@ a{
 }
 
   .card-cover{
-    height:120px;
-    display:flex; align-items:center; justify-content:center;
-    background:
-radial-gradient(circle at 12% 18%, rgba(225,214,192,.28) 0%, transparent 34%),
-radial-gradient(circle at 88% 12%, rgba(236,226,210,.22) 0%, transparent 32%),
-radial-gradient(circle at 50% 100%, rgba(214,223,205,.16) 0%, transparent 40%),
-linear-gradient(
-180deg,
-#F8F5EF 0%,
-#F5F1EA 45%,
-#F9F6F2 100%
-);
-    border-bottom:1px solid var(--line);
-  }
-  .card-cover svg{ width:30px; height:30px; color:var(--accent); }
+  height:180px;              /* было 120px — фото смотрится лучше */
+  overflow:hidden;
+  background:#EFEBE3;        /* нейтральный фон, пока фото грузится */
+  border-bottom:1px solid var(--line);
+}
+
+.card-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
 
   .card-body{
     padding:22px 24px 26px;
@@ -1205,124 +1203,125 @@ Reels / Shorts / Клипы
 
     <div class="card-grid" id="cardGrid">
 
-      <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DWZUUXSCH44/?stkn=MWFmaGEwbjV4NDZ3Zg==" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Рилс · Instagram*</span>
-          <h3>Сотрудничество с МИНТ</h3>
-          <p>Рилс для бьюти-пространства МИНТ.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DXtbNd2xWqe/?stkn=ZW9yOTJzeDJtNGZr" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Рилс · Instagram*</span>
-          <h3>Сотрудничество с МИНТ</h3>
-          <p>Второй рилс для бьюти-пространства МИНТ.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="reels" href="https://vm.tiktok.com/ZN8jpcAaq/" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Видео · TikTok</span>
-          <h3>Сотрудничество с МИНТ</h3>
-          <p>Ролик для создательницы пространства красоты МИНТ.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DWBvUYPDGp6/?stkn=MWdldGZzbzBuN3Jjbg==" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Рилс · Instagram*</span>
-          <h3>Сотрудничество с дерматологической клиникой</h3>
-          <p>Рилс с личным участием — съёмка и монтаж.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DTkmXJMDPJ-/?stkn=MW1sdzV5bDltYTF2YQ==" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Рилс · Instagram*</span>
-          <h3>Сотрудничество с клиникой им. Пьера Волькенштейна</h3>
-          <p>Рилс для врача клиники.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DdGNmlYMBWV/?stkn=MWhwcXIxNXJoZzRkag==" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Рилс · Instagram*</span>
-          <h3>Сотрудничество со школой Проборы</h3>
-          <p>Рилс для преподавателя школы дополнительного образования.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="events" href="https://vk.ru/wall-42217316_84694" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4-3h8l4 3M4 8v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M4 8h16"/><circle cx="12" cy="14" r="3.2"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Событие · Пушкинский район</span>
-          <h3>Открытие детского сада №4</h3>
-          <p>Съёмка и монтаж сюжета для администрации района.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="events" href="https://vk.ru/wall-179562127_47683" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4-3h8l4 3M4 8v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M4 8h16"/><circle cx="12" cy="14" r="3.2"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Событие · Кронштадт</span>
-          <h3>«Добрые уроки сентября»</h3>
-          <p>Районный праздник — репортажная съёмка и монтаж.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="events" href="https://vk.ru/wall-149329533_52417" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4-3h8l4 3M4 8v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M4 8h16"/><circle cx="12" cy="14" r="3.2"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Событие · Красносельский район</span>
-          <h3>Интервью с Давидом Кляцкиным</h3>
-          <p>Ликвидатор аварии на ЧАЭС — документальное интервью.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="events" href="https://vk.ru/wall-126217409_45087" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4-3h8l4 3M4 8v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M4 8h16"/><circle cx="12" cy="14" r="3.2"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Событие · Кировский район</span>
-          <h3>«Стартуем в лето»</h3>
-          <p>Уличный праздник ко Дню защиты детей.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="communities" href="https://vk.ru/pierre_wolkenstein" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Сообщество · ВКонтакте</span>
-          <h3>Клиника им. Пьера Волькенштейна</h3>
-          <p>Оформление и ведение группы клиники.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="communities" href="https://vk.ru/mintbeauty20" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="card-body">
-          <span class="card-tag">Сообщество · ВКонтакте</span>
-          <h3>Бьюти-пространство МИНТ</h3>
-          <p>Оформление и ведение группы пространства.</p>
-        </div>
-      </a>
-
-      <a class="card reveal" data-cat="sites" href="https://svanovskiy.github.io" target="_blank" rel="noopener">
-        <div class="card-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></div>
-         <div class="card-body">
-            <span class="card-tag">Сайт · ПК и мобильная версия</span>
-            <h3>Личный сайт-портфолио</h3>
-            <p>Этот сайт — тоже моя работа: от структуры и дизайна до вёрстки под десктоп и телефон.</p>
-         </div>
-      </a>
-
+  <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DWZUUXSCH44/?stkn=MWFmaGEwbjV4NDZ3Zg==" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-mint-1.jpg" alt="Сотрудничество с МИНТ"></div>
+    <div class="card-body">
+      <span class="card-tag">Рилс · Instagram*</span>
+      <h3>Сотрудничество с МИНТ</h3>
+      <p>Рилс для бьюти-пространства МИНТ.</p>
     </div>
+  </a>
+
+  <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DXtbNd2xWqe/?stkn=ZW9yOTJzeDJtNGZr" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-mint-2.jpg" alt="Сотрудничество с МИНТ"></div>
+    <div class="card-body">
+      <span class="card-tag">Рилс · Instagram*</span>
+      <h3>Сотрудничество с МИНТ</h3>
+      <p>Второй рилс для бьюти-пространства МИНТ.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="reels" href="https://vm.tiktok.com/ZN8jpcAaq/" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-mint-tiktok.jpg" alt="Сотрудничество с МИНТ"></div>
+    <div class="card-body">
+      <span class="card-tag">Видео · TikTok</span>
+      <h3>Сотрудничество с МИНТ</h3>
+      <p>Ролик для создательницы пространства красоты МИНТ.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DWBvUYPDGp6/?stkn=MWdldGZzbzBuN3Jjbg==" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-derma.jpg" alt="Дерматологическая клиника"></div>
+    <div class="card-body">
+      <span class="card-tag">Рилс · Instagram*</span>
+      <h3>Сотрудничество с дерматологической клиникой</h3>
+      <p>Рилс с личным участием — съёмка и монтаж.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DTkmXJMDPJ-/?stkn=MW1sdzV5bDltYTF2YQ==" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-wolkenstein.jpg" alt="Клиника им. Пьера Волькенштейна"></div>
+    <div class="card-body">
+      <span class="card-tag">Рилс · Instagram*</span>
+      <h3>Сотрудничество с клиникой им. Пьера Волькенштейна</h3>
+      <p>Рилс для врача клиники.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="reels" href="https://www.instagram.com/reel/DdGNmlYMBWV/?stkn=MWhwcXIxNXJoZzRkag==" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-probory.jpg" alt="Школа Проборы"></div>
+    <div class="card-body">
+      <span class="card-tag">Рилс · Instagram*</span>
+      <h3>Сотрудничество со школой Проборы</h3>
+      <p>Рилс для преподавателя школы дополнительного образования.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="events" href="https://vk.ru/wall-42217316_84694" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-detsad.jpg" alt="Открытие детского сада №4"></div>
+    <div class="card-body">
+      <span class="card-tag">Событие · Пушкинский район</span>
+      <h3>Открытие детского сада №4</h3>
+      <p>Съёмка и монтаж сюжета для администрации района.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="events" href="https://vk.ru/wall-179562127_47683" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-kronshtadt.jpg" alt="Добрые уроки сентября"></div>
+    <div class="card-body">
+      <span class="card-tag">Событие · Кронштадт</span>
+      <h3>«Добрые уроки сентября»</h3>
+      <p>Районный праздник — репортажная съёмка и монтаж.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="events" href="https://vk.ru/wall-149329533_52417" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-chaes.jpg" alt="Интервью с Давидом Кляцкиным"></div>
+    <div class="card-body">
+      <span class="card-tag">Событие · Красносельский район</span>
+      <h3>Интервью с Давидом Кляцкиным</h3>
+      <p>Ликвидатор аварии на ЧАЭС — документальное интервью.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="events" href="https://vk.ru/wall-126217409_45087" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-leto.jpg" alt="Стартуем в лето"></div>
+    <div class="card-body">
+      <span class="card-tag">Событие · Кировский район</span>
+      <h3>«Стартуем в лето»</h3>
+      <p>Уличный праздник ко Дню защиты детей.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="communities" href="https://vk.ru/pierre_wolkenstein" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-wolkenstein-vk.jpg" alt="Клиника им. Пьера Волькенштейна"></div>
+    <div class="card-body">
+      <span class="card-tag">Сообщество · ВКонтакте</span>
+      <h3>Клиника им. Пьера Волькенштейна</h3>
+      <p>Оформление и ведение группы клиники.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="communities" href="https://vk.ru/mintbeauty20" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-mint-vk.jpg" alt="Бьюти-пространство МИНТ"></div>
+    <div class="card-body">
+      <span class="card-tag">Сообщество · ВКонтакте</span>
+      <h3>Бьюти-пространство МИНТ</h3>
+      <p>Оформление и ведение группы пространства.</p>
+    </div>
+  </a>
+
+  <a class="card reveal" data-cat="sites" href="https://svanovskiy.github.io" target="_blank" rel="noopener">
+    <div class="card-cover"><img src="preview-site.jpg" alt="Личный сайт-портфолио"></div>
+    <div class="card-body">
+      <span class="card-tag">Сайт · ПК и мобильная версия</span>
+      <h3>Личный сайт-портфолио</h3>
+      <p>Этот сайт — тоже моя работа: от структуры и дизайна до вёрстки под десктоп и телефон.</p>
+    </div>
+  </a>
+
+</div>
+
   </div>
 </section>
 
