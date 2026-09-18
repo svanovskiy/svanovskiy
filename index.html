@@ -493,18 +493,19 @@ a{
 }
 
   /* ---------- set gallery ---------- */
-  .set-gallery{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-bottom:clamp(48px,7vw,72px)
-  }
-  .set-gallery img{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-    border-radius:20px;
-  }
+.set-gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-bottom:clamp(40px,5vw,64px);   /* ← отступ до таймлайна */
+}
+.set-gallery img{
+  width:100%;
+  aspect-ratio:1 / 1;                    /* ← квадраты */
+  object-fit:cover;
+  border-radius:24px;                    /* ← скругление */
+  display:block;
+}
 
   /* ---------- timeline / experience ---------- */
   .timeline{
@@ -750,7 +751,7 @@ linear-gradient(
         padding:30px 24px;
         border-radius:34px;
         box-sizing:border-box;
-      background:#F5E6D3;
+      background:#BFD3C8;
       animation:none;
       scale:1 !important;
       transition:none;
